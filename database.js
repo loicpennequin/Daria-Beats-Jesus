@@ -5,8 +5,8 @@ let knex = require('knex')({
     client: 'mysql',
     connection: {
         host     : '127.0.0.1',
-        user     : 'your-password',
-        password : 'your-user',
+        user     : 'root',
+        password : 'shoe0nhead',
         database : 'dariabeatsjesus',
         charset  : 'utf8'
     }

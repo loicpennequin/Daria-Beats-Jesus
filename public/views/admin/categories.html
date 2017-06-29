@@ -1,30 +1,37 @@
 <div class="admin-section" ng-if="activeSection == 'categories'">
 
   <h2>CATEGORIES</h2>
-  <div class="admin-tag" ng-repeat="c in categories">
+  <div class="admin-tag" ng-class="{selected : isSelected(c, selectedCategories)}" ng-repeat="c in categories" ng-click="selectItem(c, selectedCategories)">
       {{c.name}}
   </div>
   </br>
 
-  <button class="button is-primary is-outlined" ng-click = "addCategory = !addCategory">ajouter une categorie</button>
-  <div class="form-wrapper">
-    <form class="form-inline" ng-submit="addCategory()" ng-if="addCategory">
-      <input class="input is-marginless" type="text" ng-model="newCategory.name">
-      <button class="button is-primary is-marginless">ajouter</button>
-    </form>
+  <div togglable>
+    <button class="button is-primary is-outlined" ng-click="toggle()">ajouter une categorie</button>
+    <button class="button is-primary is-outlined" ng-click="deleteCategories()">supprimer la selection</button>
+    <div class="form-wrapper">
+      <form class="form-inline" ng-submit="addCategory()" ng-if="view">
+        <input class="input is-marginless" type="text" ng-model="newCategory.name">
+        <button class="button is-primary is-marginless">ajouter</button>
+      </form>
+    </div>
   </div>
 
+
   <h2>TAGS</h2>
-  <div class="admin-tag" ng-repeat="t in tags">
+  <div class="admin-tag" ng-class="{selected : isSelected(t, selectedTags)}" ng-repeat="t in tags" ng-click="selectItem(t, selectedTags)">
       {{t.name}}
   </div>
   </br>
 
-  <button class="button is-primary is-outlined" ng-click="addTag = !addTag">ajouter un tag</button>
-  <div class="form-wrapper">
-    <form class="form-inline" ng-submit="addTag()" ng-if="addTag">
-      <input class="input is-marginless" type="text" ng-model="newTag.name">
-      <button class="button is-primary is-marginless">ajouter</button>
-    </form>
+  <div togglable>
+    <button class="button is-primary is-outlined" ng-click="toggle()">ajouter un tag</button>
+    <div class="form-wrapper">
+      <form class="form-inline" ng-submit="addTag()" ng-if="view">
+        <input class="input is-marginless" type="text" ng-model="newTag.name">
+        <button class="button is-primary is-marginless">ajouter</button>
+      </form>
+    </div>
   </div>
+
 </div>

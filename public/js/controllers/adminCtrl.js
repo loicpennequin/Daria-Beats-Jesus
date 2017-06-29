@@ -3,11 +3,31 @@ app.controller('adminCtrl', function($scope, categoryFactory, articleFactory, ta
   $scope.articles = [];
   $scope.comments = [];
   $scope.tags = [];
+  $scope.selectedCategories = [];
+  $scope.selectedTags = [];
 
   // Handling active section display
   $scope.activeSection = "dashboard";
   $scope.showSection = function(section){
     $scope.activeSection = section
+  }
+
+  // item selection
+
+  $scope.selectItem = function(item, array){
+    function belongs(element){
+      return element == item
+    }
+    if (!array.some(belongs)){
+      array.push(item)
+    }else{
+      var i = array.indexOf(item);
+      array.splice(i, 1)
+    }
+  }
+
+  $scope.isSelected = function(item, array){
+    return array.some(function(el){ return el == item})
   }
 
   // CATEGORIES
@@ -25,13 +45,27 @@ app.controller('adminCtrl', function($scope, categoryFactory, articleFactory, ta
   $scope.addCategory = function(){
     categoryFactory.addCategory(this.newCategory)
       .then(function(response){
-        $scope.getCategories()
+        $scope.getCategories();
+        $scope.$broadcast('close');
       }, function(error){
         console.log(error);
       });
   };
 
-  // POSTS
+  $scope.deleteCategories = function(){
+    $scope.selectedCategories.forEach(function(category, key){
+      categoryFactory.deleteCategory(category.id)
+        .then(function(response){
+          $scope.getCategories();
+          $scope.selectedCategories = [];;
+        }, function(error){
+          console.log(error);
+        });
+      })
+  };
+
+
+  // ARTICLES
 
   $scope.getArticles = function(){
     articleFactory.getArticles()
@@ -44,6 +78,7 @@ app.controller('adminCtrl', function($scope, categoryFactory, articleFactory, ta
   $scope.getArticles();
 
   // TAGS
+
   $scope.getTags = function(){
     tagFactory.getTags()
       .then(function(response){
@@ -54,4 +89,15 @@ app.controller('adminCtrl', function($scope, categoryFactory, articleFactory, ta
   };
   $scope.getTags();
 
-})
+  $scope.addTag = function(){
+    this.newTag.slug = this.newTag.name.replace (" ", "-");
+    tagFactory.addTag(this.newTag)
+      .then(function(response){
+        $scope.getTags();
+        $scope.$broadcast('close');
+      }, function(error){
+        console.log(error);
+      });
+  };
+
+});

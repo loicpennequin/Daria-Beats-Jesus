@@ -27,4 +27,16 @@ exports.create = function(req, res){
     res.status(500).json({error: true, data: {message: err.message}});
   });
 
-}
+};
+
+exports.delete = function(req, res){
+  Category.forge({id : req.params.id})
+  .destroy()
+  .then(function(category) {
+    res.json({error: false, data: "category deleted !"});
+  })
+  .catch(function (err) {
+    res.status(500).json({error: true, data: {message: err.message}});
+  });
+
+};

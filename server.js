@@ -18,11 +18,14 @@ let category = require('./app/router/category'),
     tag = require('./app/router/tag'),
     comment = require('./app/router/comment');
 
+app.get('/api/articles', article.list);
+
 app.get('/api/categories', category.list);
 app.post('/api/categories', category.create)
+app.delete('/api/categories/:id', category.delete)
 
 app.get('/api/tags', tag.list)
-app.get('/api/articles', article.list);
+app.post('/api/tags', tag.create)
 
 
 //////// 404

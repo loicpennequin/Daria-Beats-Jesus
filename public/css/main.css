@@ -4379,7 +4379,11 @@ label.panel-block {
   cursor: pointer;
   text-align: center;
   min-width: 100px;
-  display: inline-block; }
+  display: inline-block;
+  transition: all 0.3s; }
+  .admin-tag.selected {
+    filter: brightness(115%);
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2); }
 
 * {
   box-sizing: border-box; }
