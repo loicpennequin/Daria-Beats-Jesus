@@ -28,5 +28,15 @@ exports.create = function(req, res){
   .catch(function (err) {
     res.status(500).json({error: true, data: {message: err.message}});
   });
+};
 
+exports.delete = function(req, res){
+  Tag.forge({id : req.params.id})
+  .destroy()
+  .then(function(tag) {
+    res.json({error: false, data: "tag deleted !"});
+  })
+  .catch(function (err) {
+    res.status(500).json({error: true, data: {message: err.message}});
+  });
 };

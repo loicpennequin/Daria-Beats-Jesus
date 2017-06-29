@@ -26,6 +26,8 @@ app.delete('/api/categories/:id', category.delete)
 
 app.get('/api/tags', tag.list)
 app.post('/api/tags', tag.create)
+app.delete('/api/tags/:id', tag.delete)
+
 
 
 //////// 404

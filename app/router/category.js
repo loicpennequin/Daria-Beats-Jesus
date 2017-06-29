@@ -26,7 +26,6 @@ exports.create = function(req, res){
   .catch(function (err) {
     res.status(500).json({error: true, data: {message: err.message}});
   });
-
 };
 
 exports.delete = function(req, res){
@@ -38,5 +37,4 @@ exports.delete = function(req, res){
   .catch(function (err) {
     res.status(500).json({error: true, data: {message: err.message}});
   });
-
 };

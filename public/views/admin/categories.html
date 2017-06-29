@@ -1,37 +1,79 @@
 <div class="admin-section" ng-if="activeSection == 'categories'">
 
+  <!--category delete modal-->
+  <div class="modal" ng-class="{'is-active' : categoriesDeleteConfirm}">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="modal-confirm has-text-centered">
+        <div>Do you really wish to delete the following categories ?</div>
+        <div>
+          <article ng-repeat="c in selectedCategories">{{c.name}}</article>
+        </div>
+        <button class="button is-primary" ng-click="deleteCategories(); categoriesDeleteConfirm = false ">Confirm</button>
+        <button class="button is-danger" ng-click="categoriesDeleteConfirm = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!--tag delete modal-->
+  <div class="modal" ng-class="{'is-active' : tagsDeleteConfirm}">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="modal-confirm has-text-centered">
+        <div>Do you really wish to delete the following tags ?</div>
+        <div>
+          <article ng-repeat="c in selectedCategories">{{c.name}}</article>
+        </div>
+        <button class="button is-primary" ng-click="deleteCategories(); categoriesDeleteConfirm = false ">Confirm</button>
+        <button class="button is-danger" ng-click="categoriesDeleteConfirm = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+
   <h2>CATEGORIES</h2>
   <div class="admin-tag" ng-class="{selected : isSelected(c, selectedCategories)}" ng-repeat="c in categories" ng-click="selectItem(c, selectedCategories)">
       {{c.name}}
   </div>
-  </br>
-
-  <div togglable>
-    <button class="button is-primary is-outlined" ng-click="toggle()">ajouter une categorie</button>
-    <button class="button is-primary is-outlined" ng-click="deleteCategories()">supprimer la selection</button>
-    <div class="form-wrapper">
-      <form class="form-inline" ng-submit="addCategory()" ng-if="view">
-        <input class="input is-marginless" type="text" ng-model="newCategory.name">
-        <button class="button is-primary is-marginless">ajouter</button>
-      </form>
+  <div class="columns">
+    <div class="column is-2">
+      <div togglable>
+        <button class="button is-primary is-outlined" ng-click="toggle()">add a category</button>
+        <div class="form-wrapper">
+          <form class="form-inline" ng-submit="addCategory()" ng-if="view">
+            <input class="input is-marginless" type="text" ng-model="newCategory.name">
+            <button class="button is-primary is-marginless">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="column is-2">
+        <button class="button is-primary is-outlined" ng-click="categoriesDeleteConfirm = true">Delete selected items</button>
     </div>
   </div>
+
+
+
 
 
   <h2>TAGS</h2>
   <div class="admin-tag" ng-class="{selected : isSelected(t, selectedTags)}" ng-repeat="t in tags" ng-click="selectItem(t, selectedTags)">
       {{t.name}}
   </div>
-  </br>
-
-  <div togglable>
-    <button class="button is-primary is-outlined" ng-click="toggle()">ajouter un tag</button>
-    <div class="form-wrapper">
-      <form class="form-inline" ng-submit="addTag()" ng-if="view">
-        <input class="input is-marginless" type="text" ng-model="newTag.name">
-        <button class="button is-primary is-marginless">ajouter</button>
-      </form>
+  <div class="columns">
+    <div class="column is-2">
+      <div togglable>
+        <button class="button is-primary is-outlined" ng-click="toggle()">Add a tag</button>
+        <div class="form-wrapper">
+          <form class="form-inline" ng-submit="addTag()" ng-if="view">
+            <input class="input is-marginless" type="text" ng-model="newTag.name">
+            <button class="button is-primary is-marginless">ajouter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="column is-2">
+      <button class="button is-primary is-outlined" ng-click="deleteTags()">Delete selected items</button>
     </div>
   </div>
-
-</div>
