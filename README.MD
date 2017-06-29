@@ -10,7 +10,7 @@ google est votre pote
 
 à la racine du projet, npm install
 
-### créer un fichier password à la racine du projet avec le contnu suivant :
+### créer un fichier password.js à la racine du projet avec le contnu suivant :
 
 exports.password = 'votre-mot-de-passe-mySQL'
 
