@@ -1,0 +1,30 @@
+<div class="columns">
+
+  <div class="column is-2 admin-nav">
+    <ul>
+      <li admin-nav-item class="active" ng-click="showSection('dashboard')">
+        <i class="fa fa-home" aria-hidden="true"></i>Dashboard
+      </li>
+      <li admin-nav-item ng-click="showSection('articles')">
+        <i class="fa fa-book" aria-hidden="true"></i>Articles
+      </li>
+      <li admin-nav-item ng-click="showSection('comments')">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>Comments
+      </li>
+      <li admin-nav-item ng-click="showSection('categories')">
+        <i class="fa fa-tags" aria-hidden="true"></i>Categories &amp; Tags
+      </li>
+      <li admin-nav-item ng-click="showSection('medias')">
+        <i class="fa fa-file-image-o" aria-hidden="true"></i>Medias
+      </li>
+    </ul>
+  </div>
+
+  <div class="column is-10 admin-content">
+    <div ng-include="'views/admin/dashboard.html'"></div>
+    <div ng-include="'views/admin/articles.html'"></div>
+    <div ng-include="'views/admin/comments.html'"></div>
+    <div ng-include="'views/admin/categories.html'"></div>
+    <div ng-include="'views/admin/medias.html'"></div>
+  </div>
+</div>

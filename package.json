@@ -1,0 +1,17 @@
+{
+  "name": "DariaBeatsJesus",
+  "version": "0.1.0",
+  "description": "Mon blog",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "bookshelf": "^0.10.3",
+    "express": "^4.15.3",
+    "knex": "^0.12.9",
+    "mysql": "^2.13.0",
+    "node-fetch": "^1.7.1",
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}

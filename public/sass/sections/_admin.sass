@@ -1,0 +1,93 @@
+///////////////////////
+/////SIDE MENU/////////
+///////////////////////
+.admin-nav
+  background-color: $grey-darker
+  height: 100vh
+  color: $white-ter
+  padding-top: 50px
+  font-size: 1
+  padding-right: 0
+
+  li
+    padding: 10px
+    padding-left: 30px
+    transition: all 0.2s ease-in-out
+
+    &:hover
+      color: $primary
+      background-color: $black-ter
+
+    i
+      margin-right: 5px
+
+  li.active
+    background-color: $primary
+    color: $primary-invert
+
+///////////////////////
+/////SECTIONS/////////
+///////////////////////
+//1. Generic
+
+.admin-content
+  background-color: $white-ter
+  height: 100vh
+  overflow: scroll
+  h2
+    font-size: 1.6em
+    margin: 30px 0
+    font-family: $font2
+
+.form-wrapper
+  perspective: 200px
+  perspective-origin: 10% top
+
+.form-inline
+  margin-top: 5px
+  width: 20%
+  display: flex
+  flex-direction: row
+  box-shadow: 0 10px 5px -2px $grey
+  input
+    width: 50%
+  button
+    width: 50%
+    padding: 5px
+    border-top: none
+
+.form-inline, .form-inline.ng-enter, .form-inline.ng-leave
+  transition: all 0.3s
+
+.form-inline.ng-enter, .form-inline.ng-leave.ng-leave-active
+  transform-origin: center top
+  transform: rotateX(-90DEG)
+  opacity: 0
+
+.form-inline.ng-leave, .form-inline.ng-enter.ng-enter-active
+  transform-origin: center top
+  transform: none
+  opacity: 1
+
+//2.Dashboard
+
+//3.Articles
+
+//4.Comments
+
+//5.Categories
+
+.admin-tag
+  background-color: $primary
+  color: $primary-invert
+  padding: 5px
+  border-radius: 10px
+  margin-right: 10px
+  margin-bottom: 20px
+  cursor: pointer
+  text-align: center
+  min-width: 100px
+  display: inline-block
+
+
+//6.Medias
