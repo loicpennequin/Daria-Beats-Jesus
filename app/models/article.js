@@ -5,6 +5,7 @@ require('./category');
 
 var Article = Bookshelf.Model.extend({
 	tableName: "articles",
+	hasTimestamps: true,
 	category: function(){
 		return this.belongsTo('Category')
 	},

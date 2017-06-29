@@ -1,18 +1,11 @@
-app.controller('adminCtrl', function($scope, categoryFactory, articleFactory, tagFactory){
+app.controller('adminCategoriesCtrl', function($scope, categoryFactory, articleFactory, tagFactory){
   $scope.categories = [];
-  $scope.articles = [];
   $scope.comments = [];
   $scope.tags = [];
   $scope.selectedCategories = [];
   $scope.selectedTags = [];
   $scope.categoriesDeleteConfirm = false;
   $scope.tagsDeleteConfirm = false;
-
-  // Handling active section display
-  $scope.activeSection = "dashboard";
-  $scope.showSection = function(section){
-    $scope.activeSection = section
-  }
 
   // item selection
 
@@ -38,6 +31,7 @@ app.controller('adminCtrl', function($scope, categoryFactory, articleFactory, ta
     categoryFactory.getCategories()
       .then(function(response){
         $scope.categories = response.data
+        console.log($scope.categories);
       }, function(error){
         console.log(error);
       });
@@ -66,19 +60,6 @@ app.controller('adminCtrl', function($scope, categoryFactory, articleFactory, ta
         });
       })
   };
-
-
-  // ARTICLES
-
-  $scope.getArticles = function(){
-    articleFactory.getArticles()
-      .then(function(response){
-        $scope.articles = response.data
-      }, function(error){
-        console.log(error);
-      });
-  };
-  $scope.getArticles();
 
   // TAGS
 

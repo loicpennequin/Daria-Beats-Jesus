@@ -1,5 +1,57 @@
-<div class="admin-section" ng-if="activeSection == 'articles'">
-  <div ng-repeat="article in articles">
-      {{article}}
-  </div>
+<div class="admin-section" ng-controller="adminArticlesCtrl">
+  <h2>Your articles</h2>
+  <table class="table is-bordered is-striped">
+    <thead>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Tags</th>
+      <th>Date</th>
+      <th>Last Update</th>
+      <th>Comments</th>
+      <th>Options</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="a in articles">
+        <td>{{a.titre}}</td>
+        <td>{{a.category.name}}</td>
+        <td><span ng-repeat="tag in a.tags">{{tag.name}}</span></td>
+        <td>{{a.created_at}}</td>
+        <td>{{a.updated_at}}</td>
+        <td><a href="#">see</a></td>
+        <td>
+          <a ng-href="#!/articles/{{a.slug}}"><button class="button is-primary">See</button></a>
+          <button class="button is-info">Edit</button>
+          <button class="button is-danger">X</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>New Article</h2>
+  <form ng-submit="addArticle()">
+    <div class="field">
+      <label class="label">Title</label>
+      <p class="control">
+        <input class="input" type="text" ng-model="newArticle.title">
+      </p>
+    </div>
+
+    <div class="field">
+      <label class="label">Category</label>
+      <p class="control">
+        <span class="select">
+          <select ng-options="c.name for c in categories" ng-model="newArticle.category"></select>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <label class="label">Article</label>
+      <p class="control">
+        <textarea ui-tinymce ng-model="newArticle.html"></textarea>
+      </p>
+    </div>
+
+    <button class="button is-primary is-marginless">Post</button>
+  </form>
 </div>

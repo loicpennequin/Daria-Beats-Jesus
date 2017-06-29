@@ -10,6 +10,7 @@
     "knex": "^0.12.9",
     "mysql": "^2.13.0",
     "node-fetch": "^1.7.1",
+    "slugify": "^1.1.0"
   },
   "devDependencies": {},
   "author": "",

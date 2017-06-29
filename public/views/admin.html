@@ -21,10 +21,10 @@
   </div>
 
   <div class="column is-10 admin-content">
-    <div ng-include="'views/admin/dashboard.html'"></div>
-    <div ng-include="'views/admin/articles.html'"></div>
-    <div ng-include="'views/admin/comments.html'"></div>
-    <div ng-include="'views/admin/categories.html'"></div>
-    <div ng-include="'views/admin/medias.html'"></div>
+    <div ng-include="'views/admin/dashboard.html'" ng-if="activeSection == 'dashboard'"></div>
+    <div ng-include="'views/admin/articles.html'" ng-if="activeSection === 'articles'"></div>
+    <div ng-include="'views/admin/comments.html'" ng-if="activeSection == 'comments'"></div>
+    <div ng-include="'views/admin/categories.html'" ng-if="activeSection == 'categories'"></div>
+    <div ng-include="'views/admin/medias.html'" ng-if="activeSection == 'medias'"></div>
   </div>
 </div>
