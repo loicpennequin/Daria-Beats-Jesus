@@ -3,11 +3,14 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   $scope.newArticle = {};
   $scope.tags = [];
   $scope.articleAdded = false;
+  $scope.articleDeleteConfirm = false;
+  $scope.selectedArticle = {};
   $scope.tinymceOptions = {
     plugins : 'advlist autolink link image lists charmap preview colorpicker textcolor',
     toolbar: "bold italic underline strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify link image styleselect formatselect fontsizeselect",
     theme : 'modern'
   };
+
   $scope.closeAlert = function(){
     $scope.articleAdded = false;
   }
@@ -48,4 +51,20 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
       console.log(error);
     });
   };
+
+  $scope.confirmDeletion = function(article){
+    $scope.articleDeleteConfirm = true;
+    $scope.selectedArticle = article;
+    console.log($scope.selectedArticle);
+  }
+
+  $scope.deleteArticle = function(){
+    articleFactory.deleteArticle($scope.selectedArticle.id)
+      .then(function(response){
+        $scope.getArticles();
+        $scope.selectedArticle = {};
+      }, function(error){
+        console.log(error);
+      });
+  }
 });

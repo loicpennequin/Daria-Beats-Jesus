@@ -13,14 +13,15 @@ app.use(express.static('public'));
 
 /*=========================================ROUTING======================================*/
 
-let category = require('./app/router/category'),
-    article = require('./app/router/article'),
-    tag = require('./app/router/tag'),
-    comment = require('./app/router/comment');
+let category = require('./app/routeHandler/category'),
+    article = require('./app/routeHandler/article'),
+    tag = require('./app/routeHandler/tag'),
+    comment = require('./app/routeHandler/comment');
 
 app.get('/api/articles', article.list);
 app.get('/api/articles/:slug', article.show)
 app.post('/api/articles', article.create);
+app.delete('/api/articles/:id', article.delete)
 
 app.get('/api/categories', category.list);
 app.post('/api/categories', category.create)

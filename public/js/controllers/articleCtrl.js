@@ -1,7 +1,7 @@
-app.controller('articleCtrl', function($scope, categoryFactory, articleFactory, tagFactory, $routeParams){
+app.controller('articleCtrl', function($scope, categoryFactory, articleFactory, tagFactory, $routeParams, $sce){
   $scope.article = [];
   $scope.categories = [];
-
+  $scope.articleContent;
 
   //ARTICLE
 
@@ -9,7 +9,7 @@ app.controller('articleCtrl', function($scope, categoryFactory, articleFactory, 
     articleFactory.getArticle($routeParams.slug)
       .then(function(response){
         $scope.article = response.data
-        console.log($scope.article);
+        $scope.articleContent = $sce.trustAsHtml($scope.article.html);
       }, function(error){
         console.log(error);
       });

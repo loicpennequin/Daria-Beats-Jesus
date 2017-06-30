@@ -1,8 +1,21 @@
 <div class="admin-section" ng-controller="adminArticlesCtrl">
+
   <!-- article success alert-->
   <div class="notification is-success" ng-if="articleAdded">
     <button class="delete" ng-click="closeAlert()"></button>
     Article successfully added
+  </div>
+
+  <!--article delete modal-->
+  <div class="modal" ng-class="{'is-active' : articleDeleteConfirm}">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="modal-confirm has-text-centered">
+        <div>Do you really wish to delete this article ? It can't be undone after this step.</div>
+        <button class="button is-primary" ng-click="deleteArticle(); articleDeleteConfirm = false ">Confirm</button>
+        <button class="button is-danger" ng-click="articlesDeleteConfirm = false">Cancel</button>
+      </div>
+    </div>
   </div>
 
   <h2>Your articles</h2>
@@ -27,7 +40,7 @@
         <td>
           <a ng-href="#!/articles/{{a.slug}}"><button class="button is-primary">See</button></a>
           <button class="button is-info">Edit</button>
-          <button class="button is-danger">X</button>
+          <button class="button is-danger" ng-click="confirmDeletion(a)">X</button>
         </td>
       </tr>
     </tbody>

@@ -31,7 +31,6 @@ app.controller('adminCategoriesCtrl', function($scope, categoryFactory, articleF
     categoryFactory.getCategories()
       .then(function(response){
         $scope.categories = response.data
-        console.log($scope.categories);
       }, function(error){
         console.log(error);
       });
@@ -54,7 +53,6 @@ app.controller('adminCategoriesCtrl', function($scope, categoryFactory, articleF
         .then(function(response){
           $scope.getCategories();
           $scope.selectedCategories = [];
-          console.log($scope.categoriesDeleteConfirm);
         }, function(error){
           console.log(error);
         });
