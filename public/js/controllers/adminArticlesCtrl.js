@@ -1,5 +1,16 @@
-app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFactory, tagFactory){
+app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFactory, tagFactory, $timeout){
   $scope.articles = [];
+  $scope.newArticle = {};
+  $scope.tags = [];
+  $scope.articleAdded = false;
+  $scope.tinymceOptions = {
+    plugins : 'advlist autolink link image lists charmap preview colorpicker textcolor',
+    toolbar: "bold italic underline strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify link image styleselect formatselect fontsizeselect",
+    theme : 'modern'
+  };
+  $scope.closeAlert = function(){
+    $scope.articleAdded = false;
+  }
 
   // CATEGORIES
 
@@ -26,9 +37,13 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   $scope.getArticles();
 
   $scope.addArticle = function(){
-    articleFactory.addArticle(this.newArticle)
+    articleFactory.addArticle($scope.newArticle)
     .then(function(response){
-      console.log('article ajouté');
+      $scope.newArticle = {};
+      $scope.new_article_form.$setPristine();
+      $scope.getArticles();
+      $scope.articleAdded = true;
+      $timeout(function(){$scope.articleAdded = false;}, 3000)
     }, function(error){
       console.log(error);
     });

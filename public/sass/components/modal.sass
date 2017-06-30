@@ -79,3 +79,14 @@
   // Modifiers
   &.is-active
     display: flex
+    animation: modal 0.8s forwards
+
+@keyframes modal
+  from
+    opacity: 0
+    transform: translateX(100%)
+  70%
+    opacity: 1
+    transform: translateX(-5%)
+  to
+    transform: none

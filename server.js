@@ -22,7 +22,6 @@ app.get('/api/articles', article.list);
 app.get('/api/articles/:slug', article.show)
 app.post('/api/articles', article.create);
 
-
 app.get('/api/categories', category.list);
 app.post('/api/categories', category.create)
 app.delete('/api/categories/:id', category.delete)

@@ -35,6 +35,8 @@
   height: 100vh
   overflow: scroll
   padding-left: 50px
+  position: relative
+  // overflow-x: hidden
 
   section
     position: relative
@@ -83,6 +85,39 @@
   transform-origin: center top
   transform: none
   opacity: 1
+
+
+.form-inline.ng-invalid, input.ng-invalid, textarea.ng-invalid, select.ng-invalid
+  box-shadow: 0 0 5px 2px $danger
+
+.form-inline input.ng-invalid
+  box-shadow: none
+
+.form-wrapper
+  position: relative
+
+.notification
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 10
+
+.notification, .notification.ng-enter, .notification.ng-leave
+  transition: all 0.5s
+
+.notification.ng-enter
+  transform: translateX(100%)
+  opacity: 0
+
+.notification.ng-enter.ng-enter-active, .notification.ng-leave
+  transform: none
+  opacity: 1
+
+.notification.ng-leave.ng-leave-active
+  transform: translateX(-100%)
+  opacity: 0
+
 
 
 //2.Dashboard

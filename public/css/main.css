@@ -1947,11 +1947,11 @@ input[type="submit"].button {
   .table thead td,
   .table thead th {
     border-width: 0 0 2px;
-    color: #7a7a7a; }
+    color: #1fb2b2; }
   .table tfoot td,
   .table tfoot th {
     border-width: 2px 0 0;
-    color: #7a7a7a; }
+    color: #1fb2b2; }
   .table tbody tr:last-child td,
   .table tbody tr:last-child th {
     border-bottom-width: 0; }
@@ -2660,8 +2660,18 @@ input[type="submit"].button {
   position: fixed;
   z-index: 20; }
   .modal.is-active {
-    display: flex; }
+    display: flex;
+    animation: modal 0.8s forwards; }
 
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translateX(100%); }
+  70% {
+    opacity: 1;
+    transform: translateX(-5%); }
+  to {
+    transform: none; } }
 .nav-toggle {
   cursor: pointer;
   display: block;
@@ -4334,7 +4344,8 @@ label.panel-block {
   background-color: #ebebeb;
   height: 100vh;
   overflow: scroll;
-  padding-left: 50px; }
+  padding-left: 50px;
+  position: relative; }
   .admin-content section {
     position: relative; }
   .admin-content h2 {
@@ -4379,6 +4390,37 @@ label.panel-block {
   transform-origin: center top;
   transform: none;
   opacity: 1; }
+
+.form-inline.ng-invalid, input.ng-invalid, textarea.ng-invalid, select.ng-invalid {
+  box-shadow: 0 0 5px 2px #ff3860; }
+
+.form-inline input.ng-invalid {
+  box-shadow: none; }
+
+.form-wrapper {
+  position: relative; }
+
+.notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; }
+
+.notification, .notification.ng-enter, .notification.ng-leave {
+  transition: all 0.5s; }
+
+.notification.ng-enter {
+  transform: translateX(100%);
+  opacity: 0; }
+
+.notification.ng-enter.ng-enter-active, .notification.ng-leave {
+  transform: none;
+  opacity: 1; }
+
+.notification.ng-leave.ng-leave-active {
+  transform: translateX(-100%);
+  opacity: 0; }
 
 .admin-tag {
   background-color: #1fb2b2;

@@ -1,4 +1,10 @@
 <div class="admin-section" ng-controller="adminArticlesCtrl">
+  <!-- article success alert-->
+  <div class="notification is-success" ng-if="articleAdded">
+    <button class="delete" ng-click="closeAlert()"></button>
+    Article successfully added
+  </div>
+
   <h2>Your articles</h2>
   <table class="table is-bordered is-striped">
     <thead>
@@ -15,8 +21,8 @@
         <td>{{a.titre}}</td>
         <td>{{a.category.name}}</td>
         <td><span ng-repeat="tag in a.tags">{{tag.name}}</span></td>
-        <td>{{a.created_at}}</td>
-        <td>{{a.updated_at}}</td>
+        <td>{{a.created_at | date : 'mediumDate'}}</td>
+        <td>{{a.updated_at | date : 'mediumDate'}}</td>
         <td><a href="#">see</a></td>
         <td>
           <a ng-href="#!/articles/{{a.slug}}"><button class="button is-primary">See</button></a>
@@ -28,11 +34,11 @@
   </table>
 
   <h2>New Article</h2>
-  <form ng-submit="addArticle()">
+  <form ng-submit="addArticle()" name="new_article_form">
     <div class="field">
       <label class="label">Title</label>
       <p class="control">
-        <input class="input" type="text" ng-model="newArticle.title">
+        <input class="input" type="text" ng-model="newArticle.title" required>
       </p>
     </div>
 
@@ -40,7 +46,7 @@
       <label class="label">Category</label>
       <p class="control">
         <span class="select">
-          <select ng-options="c.name for c in categories" ng-model="newArticle.category"></select>
+          <select ng-options="c.name for c in categories" ng-model="newArticle.category" required></select>
         </span>
       </p>
     </div>
@@ -48,10 +54,12 @@
     <div class="field">
       <label class="label">Article</label>
       <p class="control">
-        <textarea ui-tinymce ng-model="newArticle.html"></textarea>
+        <textarea ui-tinymce="tinymceOptions" ng-model="newArticle.html"></textarea>
       </p>
     </div>
 
     <button class="button is-primary is-marginless">Post</button>
   </form>
+
+
 </div>

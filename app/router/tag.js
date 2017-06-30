@@ -11,7 +11,6 @@ exports.list = function(req, res){
     res.json({error: false, data: collection.toJSON()});
   })
   .catch(function (err) {
-    console.log(err);
     res.status(500).json({error: true, data: {message: err.message}});
   });
 };

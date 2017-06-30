@@ -42,7 +42,7 @@
         <button class="button is-primary is-outlined" ng-click="toggle()">add a category</button>
         <div class="form-wrapper">
           <form class="form-inline" ng-submit="addCategory()" ng-if="view">
-            <input class="input is-marginless" type="text" ng-model="newCategory.name">
+            <input class="input is-marginless" type="text" ng-model="newCategory.name" required>
             <button class="button is-primary is-marginless">Add</button>
           </form>
         </div>
@@ -53,10 +53,6 @@
     </div>
   </div>
 
-
-
-
-
   <h2>TAGS</h2>
   <div class="admin-tag" ng-class="{selected : isSelected(t, selectedTags)}" ng-repeat="t in tags" ng-click="selectItem(t, selectedTags)">
       {{t.name}}
@@ -66,7 +62,7 @@
       <div togglable>
         <button class="button is-primary is-outlined" ng-click="toggle()">Add a tag</button>
         <div class="form-wrapper">
-          <form class="form-inline" ng-submit="addTag()" ng-if="view">
+          <form class="form-inline" ng-submit="addTag()" ng-if="view" required>
             <input class="input is-marginless" type="text" ng-model="newTag.name">
             <button class="button is-primary is-marginless">ajouter</button>
           </form>
