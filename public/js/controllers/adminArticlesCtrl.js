@@ -33,6 +33,7 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
     articleFactory.getArticles()
       .then(function(response){
         $scope.articles = response.data
+        console.log($scope.articles);
       }, function(error){
         console.log(error);
       });
@@ -40,6 +41,8 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   $scope.getArticles();
 
   $scope.addArticle = function(){
+    $scope.newArticle.tagsArray = $scope.newArticle.tags.split(",")
+    console.log($scope.newArticle.tagsArray);
     articleFactory.addArticle($scope.newArticle)
     .then(function(response){
       $scope.newArticle = {};

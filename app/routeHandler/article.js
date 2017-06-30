@@ -3,7 +3,9 @@ let express = require('express'),
     router = express.Router(),
     slugify = require('slugify')
     Articles = require('../collections/articles'),
-    Article = require('../models/article');
+    Article = require('../models/article'),
+    Tags = require('../collections/tags'),
+    _ = require('lodash');
 
 exports.list = function(req, res){
   Articles.forge()
@@ -28,7 +30,8 @@ exports.show = function(req, res){
 };
 
 exports.create = function(req,res){
-  let slug = slugify(req.body.title)
+  let slug = slugify(req.body.title),
+      tags = req.body.tagsArray;
   Article.forge({
     titre : req.body.title,
     html : req.body.html,
@@ -36,10 +39,31 @@ exports.create = function(req,res){
     category_id : req.body.category.id,
   })
   .save()
-  .then(function(article) {
-    res.json({error: false, data: "article added !"});
+  .then(function (article) {
+
+    // post successfully saved
+    // save tags
+    saveTags(tags)
+    .then(function (ids) {
+      article.load(['tags'])
+      .then(function (model) {
+
+        // attach tags to post
+        model.tags().attach(ids);
+        res.json({error: false, data: {message: 'Tags saved'}});
+      })
+      .catch(function (err) {
+        console.log(err);
+        res.status(500).json({error: true, data: {message: err.message}});
+      });
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.status(500).json({error: true, data: {message: err.message}});
+    });
   })
   .catch(function (err) {
+    console.log(err);
     res.status(500).json({error: true, data: {message: err.message}});
   });
 };
@@ -54,4 +78,46 @@ exports.delete = function(req,res){
     res.status(500).json({error: true, data: {message: err.message}});
   });
 
+}
+
+
+function saveTags(tags) {
+  // create tag objects
+  var tagObjects = tags.map(function (tag) {
+    return {
+      name: tag,
+      slug: slugify(tag)
+    };
+  });
+  return Tags.forge()
+  // fetch tags that already exist
+  .query('whereIn', 'slug', _.map(tagObjects, 'slug'))
+  .fetch()
+  .then(function (existingTags) {
+    var doNotExist = [];
+    existingTags = existingTags.toJSON();
+
+    // filter out existing tags
+    if (existingTags.length > 0) {
+      var existingSlugs = _.map(existingTags, 'slug');
+      doNotExist = tagObjects.filter(function (t) {
+        return existingSlugs.indexOf(t.slug) < 0;
+      });
+    }
+    else {
+      doNotExist = tagObjects;
+    }
+
+    // save tags that do not exist
+    return new Tags(doNotExist).mapThen(function(model) {
+      return model.save()
+      .then(function() {
+        return model.get('id');
+      });
+    })
+    // return ids of all passed tags
+    .then(function (ids) {
+      return _.union(ids, _.map(existingTags, 'id'));
+    });
+  });
 }

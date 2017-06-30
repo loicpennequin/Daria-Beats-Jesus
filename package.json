@@ -8,6 +8,7 @@
     "bookshelf": "^0.10.3",
     "express": "^4.15.3",
     "knex": "^0.12.9",
+    "lodash": "^4.17.4",
     "mysql": "^2.13.0",
     "node-fetch": "^1.7.1",
     "slugify": "^1.1.0"

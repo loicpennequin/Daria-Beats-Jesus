@@ -30,10 +30,10 @@
       <th>Options</th>
     </thead>
     <tbody>
-      <tr ng-repeat="a in articles">
+      <tr ng-repeat="a in articles | orderBy : 'id'">
         <td>{{a.titre}}</td>
         <td>{{a.category.name}}</td>
-        <td><span ng-repeat="tag in a.tags">{{tag.name}}</span></td>
+        <td><div ng-repeat="tag in a.tags">"{{tag.name}}" </div></td>
         <td>{{a.created_at | date : 'mediumDate'}}</td>
         <td>{{a.updated_at | date : 'mediumDate'}}</td>
         <td><a href="#">see</a></td>
@@ -47,7 +47,7 @@
   </table>
 
   <h2>New Article</h2>
-  <form ng-submit="addArticle()" name="new_article_form">
+  <form name="new_article_form">
     <div class="field">
       <label class="label">Title</label>
       <p class="control">
@@ -67,11 +67,19 @@
     <div class="field">
       <label class="label">Article</label>
       <p class="control">
-        <textarea ui-tinymce="tinymceOptions" ng-model="newArticle.html"></textarea>
+        <textarea ui-tinymce="tinymceOptions" ng-model="newArticle.html" required></textarea>
       </p>
     </div>
 
-    <button class="button is-primary is-marginless">Post</button>
+    <div class="field">
+      <label class="label">Tags</label>
+      <p class="control">
+        <input class="input" type="text" ng-model="newArticle.tags" placeholder="add your tags here, separated by a comma">
+      </p>
+    </div>
+
+
+    <button class="button is-primary is-marginless" ng-click="addArticle()">Post</button>
   </form>
 
 
