@@ -3,6 +3,7 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   $scope.newArticle = {};
   $scope.tags = [];
   $scope.articleAdded = false;
+  $scope.articleError = false;
   $scope.articleDeleteConfirm = false;
   $scope.selectedArticle = {};
   $scope.tinymceOptions = {
@@ -40,7 +41,9 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   $scope.getArticles();
 
   $scope.addArticle = function(){
-    $scope.newArticle.tagsArray = $scope.newArticle.tags.split(",")
+    if ($scope.newArticle.tag){
+      $scope.newArticle.tagsArray = $scope.newArticle.tags.split(",")
+    }
     console.log($scope.newArticle.tagsArray);
     articleFactory.addArticle($scope.newArticle)
     .then(function(response){
@@ -50,7 +53,8 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
       $scope.articleAdded = true;
       $timeout(function(){$scope.articleAdded = false;}, 3000)
     }, function(error){
-      console.log(error);
+      $scope.articleError = true;
+      $timeout(function(){$scope.articleError = false;}, 3000)
     });
   };
 

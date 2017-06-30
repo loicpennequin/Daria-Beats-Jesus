@@ -1,9 +1,12 @@
 'use strict';
 
-let express = require('express'),
+let http = require('http'),
+    express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     Bookshelf = require('./database'),
+    formidable = require('formidable'),
+    fs = require('fs'),
     port = 8080;
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -30,6 +33,9 @@ app.delete('/api/categories/:id', category.delete)
 app.get('/api/tags', tag.list)
 app.post('/api/tags', tag.create)
 app.delete('/api/tags/:id', tag.delete)
+
+app.get('/api/comments', comment.list)
+app.put('/api/comments/:id/read', comment.isRead)
 
 
 

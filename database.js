@@ -1,13 +1,13 @@
 // database.js
 'use strict';
 
-let password = require("./password.js"),
+let password = require("./password.js").password,
     knex = require('knex')({
     client: 'mysql',
     connection: {
         host     : '127.0.0.1',
         user     : 'root',
-        password : password.password,
+        password : password,
         database : 'dariabeatsjesus',
         charset  : 'utf8'
     }

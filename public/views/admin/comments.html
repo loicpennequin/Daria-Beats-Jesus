@@ -1,3 +1,54 @@
-<div class="admin-section" >
-  contenu comments
+<div class="admin-section" ng-controller="adminCommentsCtrl">
+  <h2>New Comments</h2>
+  <table class="table is-bordered is-striped">
+    <thead>
+      <th>Author</th>
+      <th>Article</th>
+      <th>Content</th>
+      <th>Date</th>
+      <th>Options</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="c in unreadComments | orderBy : '-created_at'">
+        <td>{{c.author}}</td>
+        <td>
+          <a ng-href="#!/articles/{{c.article.slug}}">{{c.article.titre}}</a>
+        </td>
+        <td>{{c.content}}</td>
+        <td>{{c.created_at | date : 'MMM d, HH:mm '}}</td>
+        <td>
+          <button class="button is-primary" ng-click="markAsRead(c)">Mark as read</button>
+          <button class="button is-info">Edit</button>
+          <button class="button is-danger" ng-click="confirmDeletion(a)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div ng-if="unreadComments.length==0">There are no new comments.</div>
+
+  <h2>All Comments</h2>
+  <table class="table is-bordered is-striped">
+    <thead>
+      <th>Author</th>
+      <th>Article</th>
+      <th>Content</th>
+      <th>Date</th>
+      <th>Options</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="c in comments | orderBy : '-created_at'">
+        <td>{{c.author}}</td>
+        <td>
+          <a ng-href="#!/articles/{{c.article.slug}}">{{c.article.titre}}</a>
+        </td>
+        <td>{{c.content}}</td>
+        <td>{{c.created_at | date : 'MMM d, HH:mm '}}</td>
+        <td>
+          <button class="button is-info">Edit</button>
+          <button class="button is-danger" ng-click="confirmDeletion(a)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>

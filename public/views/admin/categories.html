@@ -22,10 +22,10 @@
       <div class="modal-confirm has-text-centered">
         <div>Do you really wish to delete the following tags ?</div>
         <div>
-          <article ng-repeat="c in selectedCategories">{{c.name}}</article>
+          <article ng-repeat="t in selectedTag">{{t.name}}</article>
         </div>
-        <button class="button is-primary" ng-click="deleteCategories(); categoriesDeleteConfirm = false ">Confirm</button>
-        <button class="button is-danger" ng-click="categoriesDeleteConfirm = false">Cancel</button>
+        <button class="button is-primary" ng-click="deleteTags(); tagsDeleteConfirm = false ">Confirm</button>
+        <button class="button is-danger" ng-click="tagsDeleteConfirm = false">Cancel</button>
       </div>
     </div>
   </div>
@@ -33,8 +33,10 @@
 
 
   <h2>CATEGORIES</h2>
-  <div class="admin-tag" ng-class="{selected : isSelected(c, selectedCategories)}" ng-repeat="c in categories" ng-click="selectItem(c, selectedCategories)">
+  <div>
+    <div class="admin-tag" ng-class="{selected : isSelected(c, selectedCategories)}" ng-repeat="c in categories" ng-click="selectItem(c, selectedCategories)">
       {{c.name}}
+    </div>
   </div>
   <div class="columns">
     <div class="column is-2">
@@ -54,8 +56,10 @@
   </div>
 
   <h2>TAGS</h2>
-  <div class="admin-tag" ng-class="{selected : isSelected(t, selectedTags)}" ng-repeat="t in tags" ng-click="selectItem(t, selectedTags)">
+  <div>
+    <div class="admin-tag" ng-class="{selected : isSelected(t, selectedTags)}" ng-repeat="t in tags" ng-click="selectItem(t, selectedTags)">
       {{t.name}}
+    </div>
   </div>
   <div class="columns">
     <div class="column is-2">
@@ -70,6 +74,6 @@
       </div>
     </div>
     <div class="column is-2">
-      <button class="button is-primary is-outlined" ng-click="deleteTags()">Delete selected items</button>
+      <button class="button is-primary is-outlined" ng-click="tagsDeleteConfirm = true">Delete selected items</button>
     </div>
   </div>
