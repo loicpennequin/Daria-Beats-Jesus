@@ -33,7 +33,6 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
     articleFactory.getArticles()
       .then(function(response){
         $scope.articles = response.data
-        console.log($scope.articles);
       }, function(error){
         console.log(error);
       });

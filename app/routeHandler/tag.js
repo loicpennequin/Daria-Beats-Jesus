@@ -31,9 +31,21 @@ exports.create = function(req, res){
 
 exports.delete = function(req, res){
   Tag.forge({id : req.params.id})
-  .destroy()
+  .fetch()
   .then(function(tag) {
-    res.json({error: false, data: "tag deleted !"});
+    tag.articles().detach()
+    .then(function(){
+      tag.destroy()
+      .then(function(){
+        res.json({error: false, data: "tag deleted !"});
+      })
+      .catch(function (err) {
+        res.status(500).json({error: true, data: {message: err.message}});
+      });
+    })
+    .catch(function (err) {
+      res.status(500).json({error: true, data: {message: err.message}});
+    });
   })
   .catch(function (err) {
     res.status(500).json({error: true, data: {message: err.message}});
