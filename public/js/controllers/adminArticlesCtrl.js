@@ -41,10 +41,9 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   $scope.getArticles();
 
   $scope.addArticle = function(){
-    if ($scope.newArticle.tag){
+    if ($scope.newArticle.tags){
       $scope.newArticle.tagsArray = $scope.newArticle.tags.split(",")
     }
-    console.log($scope.newArticle.tagsArray);
     articleFactory.addArticle($scope.newArticle)
     .then(function(response){
       $scope.newArticle = {};
@@ -61,8 +60,7 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   $scope.confirmDeletion = function(article){
     $scope.articleDeleteConfirm = true;
     $scope.selectedArticle = article;
-    console.log($scope.selectedArticle);
-  }
+  };
 
   $scope.deleteArticle = function(){
     articleFactory.deleteArticle($scope.selectedArticle.id)
@@ -72,5 +70,6 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
       }, function(error){
         console.log(error);
       });
-  }
+  };
+  
 });

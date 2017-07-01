@@ -1,4 +1,18 @@
 <div class="admin-section" ng-controller="adminCommentsCtrl">
+
+  <!--comment delete modal-->
+  <div class="modal" ng-class="{'is-active' : commentDeleteConfirm}">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="modal-confirm has-text-centered">
+        <div>Do you really wish to delete this comment ? It can't be undone after this step.</div>
+        <button class="button is-primary" ng-click="deleteComment(); commentDeleteConfirm = false ">Confirm</button>
+        <button class="button is-danger" ng-click="commentDeleteConfirm = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+
   <h2>New Comments</h2>
   <table class="table is-bordered is-striped">
     <thead>
@@ -19,7 +33,7 @@
         <td>
           <button class="button is-primary" ng-click="markAsRead(c)">Mark as read</button>
           <button class="button is-info">Edit</button>
-          <button class="button is-danger" ng-click="confirmDeletion(a)">Delete</button>
+          <button class="button is-danger" ng-click="confirmDeletion(c)">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -45,7 +59,7 @@
         <td>{{c.created_at | date : 'MMM d, HH:mm '}}</td>
         <td>
           <button class="button is-info">Edit</button>
-          <button class="button is-danger" ng-click="confirmDeletion(a)">Delete</button>
+          <button class="button is-danger" ng-click="confirmDeletion(c)">Delete</button>
         </td>
       </tr>
     </tbody>

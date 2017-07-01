@@ -15,4 +15,5 @@ app.controller('articleCtrl', function($scope, categoryFactory, articleFactory, 
       });
   };
   $scope.getArticle();
+  
 });

@@ -1,6 +1,9 @@
 app.controller('adminCommentsCtrl', function($scope, commentFactory, categoryFactory, articleFactory, tagFactory){
   $scope.comments = [];
   $scope.unreadComments = [];
+  $scope.selectedComment = {};
+  $scope.commentDeleteConfirm = false;
+
 
 
   // COMmENTS
@@ -31,7 +34,22 @@ app.controller('adminCommentsCtrl', function($scope, commentFactory, categoryFac
         $scope.getComments();
       }, function(error){
         console.log(error);
-      })
-  }
+      });
+  };
+
+  $scope.deleteComment = function(){
+    commentFactory.deleteComment($scope.selectedComment.id)
+      .then(function(response){
+        $scope.getComments();
+        $scope.selectedArticle = {};
+      }, function(error){
+        console.log(error);
+      });
+  };
+
+  $scope.confirmDeletion = function(comment){
+    $scope.commentDeleteConfirm = true;
+    $scope.selectedComment = comment;
+  };
 
 });

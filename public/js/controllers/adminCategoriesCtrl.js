@@ -19,11 +19,11 @@ app.controller('adminCategoriesCtrl', function($scope, categoryFactory, articleF
       var i = array.indexOf(item);
       array.splice(i, 1)
     }
-  }
+  };
 
   $scope.isSelected = function(item, array){
     return array.some(function(el){ return el == item})
-  }
+  };
 
   // CATEGORIES
 
@@ -56,7 +56,7 @@ app.controller('adminCategoriesCtrl', function($scope, categoryFactory, articleF
         }, function(error){
           console.log(error);
         });
-      })
+      });
   };
 
   // TAGS
@@ -91,7 +91,7 @@ app.controller('adminCategoriesCtrl', function($scope, categoryFactory, articleF
         }, function(error){
           console.log(error);
         });
-      })
+      });
   };
 
 

@@ -16,4 +16,5 @@ app.controller('homeCtrl', function($scope){
   $scope.addlink = function(){
     $scope.post += "<a href=''></a>";
   }
+  
 })

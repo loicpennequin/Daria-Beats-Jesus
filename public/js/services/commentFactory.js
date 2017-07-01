@@ -19,6 +19,16 @@ app.factory('commentFactory', function($http, $q){
           deferred.reject(error)
         });
       return deferred.promise;
+    },
+    deleteComment : function(id){
+      var deferred = $q.defer();
+      $http.delete('http://localhost:8080/api/comments/' + id)
+        .then(function(response){
+          deferred.resolve(response.data)
+        }, function(error){
+          deferred.reject(error)
+        });
+      return deferred.promise;
     }
   }
 });

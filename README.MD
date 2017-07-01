@@ -25,7 +25,7 @@ ou dans phpmyadmin : importer blabla c'est pas dur
 
 ### lancement du serveur node
 
-à la racine du projet, node server.js
-vous devriez voir s'afficher "server running at port 8080". Si ce n'est pas le cas, soit vous avez merdé quelque part, soit c'est moi. Si vous êtes surs que c'est moi, faites le moi savoir s'il vous plait.
+à la racine du projet, tapez node server.js
+vous devriez voir s'afficher "server running at port 8080". Si ce n'est pas le cas, soit vous avez merdé quelque part, soit c'est moi qui ne sait pas écrire un README correctement. Si vous êtes surs que c'est moi, faites le moi savoir s'il vous plait.
 
-enfin, allez sur http://localhost:8080 pour consulter le site (lien provisoire 'admin' sur la home)
+enfin, allez sur http://localhost:8080 pour consulter le site (lien provisoire 'admin' sur la home, vu que seule l'interface admin est faite pour l'instant.)

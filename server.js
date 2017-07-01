@@ -36,6 +36,7 @@ app.delete('/api/tags/:id', tag.delete)
 
 app.get('/api/comments', comment.list)
 app.put('/api/comments/:id/read', comment.isRead)
+app.delete('/api/comments/:id', comment.delete)
 
 
 
