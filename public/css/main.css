@@ -4356,7 +4356,7 @@ label.panel-block {
     border-bottom: solid 2px #1f99b2; }
   .admin-content .modal-confirm {
     background-color: #ebebeb;
-    padding: 50px 10px; }
+    padding: 50px 15px; }
     .admin-content .modal-confirm article {
       color: #1f99b2;
       margin: 10px 5px;
@@ -4394,7 +4394,7 @@ label.panel-block {
   opacity: 1; }
 
 .form-inline.ng-invalid, input.ng-invalid, textarea.ng-invalid, select.ng-invalid {
-  box-shadow: 0 0 5px 2px #ff383f; }
+  box-shadow: 0 0 5px 1px #ff383f; }
 
 .form-inline input.ng-invalid {
   box-shadow: none; }
@@ -4421,6 +4421,10 @@ label.panel-block {
   transform: translateX(-100%);
   opacity: 0; }
 
+.table-comments {
+  color: #1f99b2;
+  cursor: pointer; }
+
 .admin-tag {
   background-color: #1f99b2;
   color: #fff;
@@ -4435,6 +4439,29 @@ label.panel-block {
   .admin-tag.selected {
     filter: brightness(115%);
     box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2); }
+
+.img-thumbnail {
+  position: relative; }
+  .img-thumbnail img {
+    height: 150px;
+    width: 85%;
+    border: solid #1f99b2 2px; }
+
+.form-upload {
+  margin-bottom: 50px; }
+
+.delete-img {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+
+input[type='file'] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; }
 
 * {
   box-sizing: border-box; }

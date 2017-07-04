@@ -6,6 +6,9 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   $scope.articleError = false;
   $scope.articleDeleteConfirm = false;
   $scope.selectedArticle = {};
+  $scope.articleComments = [];
+  $scope.seeComments = false;
+  $scope.seeCommentsModal = false;
   $scope.tinymceOptions = {
     plugins : 'advlist autolink link image lists charmap preview colorpicker textcolor',
     toolbar: "bold italic underline strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify link image styleselect formatselect fontsizeselect",
@@ -71,5 +74,10 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
         console.log(error);
       });
   };
-  
+
+  $scope.seeComments = function(article){
+    $scope.articleComments = article.comments;
+    $scope.seeCommentsModal = true;
+  }
+
 });

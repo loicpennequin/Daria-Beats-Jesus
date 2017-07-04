@@ -2,6 +2,7 @@ let Bookshelf = require('../../database');
 
 require('./tag');
 require('./category');
+require('./comment')
 
 var Article = Bookshelf.Model.extend({
 	tableName: "articles",
@@ -11,6 +12,9 @@ var Article = Bookshelf.Model.extend({
 	},
 	tags : function(){
 		return this.belongsToMany('Tag', 'articles_tags')
+	},
+	comments : function(){
+		return this.hasMany('Comment')
 	}
 });
 

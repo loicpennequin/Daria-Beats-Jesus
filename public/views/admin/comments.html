@@ -1,5 +1,11 @@
 <div class="admin-section" ng-controller="adminCommentsCtrl">
 
+  <!-- error alert -->
+  <div class="notification is-danger" ng-if="commentError">
+    <button class="delete" ng-click="closeAlert()"></button>
+    An error has occured. Please retry later.
+  </div>
+
   <!--comment delete modal-->
   <div class="modal" ng-class="{'is-active' : commentDeleteConfirm}">
     <div class="modal-background"></div>

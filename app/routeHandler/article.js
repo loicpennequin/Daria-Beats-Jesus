@@ -9,7 +9,7 @@ let express = require('express'),
 
 exports.list = function(req, res){
   Articles.forge()
-  .fetch({withRelated : ['category', 'tags']})
+  .fetch({withRelated : ['category', 'tags', 'comments']})
   .then(function (collection) {
     res.json({error: false, data: collection.toJSON()});
   })
@@ -78,8 +78,7 @@ exports.delete = function(req,res){
     res.status(500).json({error: true, data: {message: err.message}});
   });
 
-}
-
+};
 
 function saveTags(tags) {
   // create tag objects

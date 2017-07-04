@@ -1,8 +1,9 @@
-app.controller('adminCommentsCtrl', function($scope, commentFactory, categoryFactory, articleFactory, tagFactory){
+app.controller('adminCommentsCtrl', function($scope, commentFactory, categoryFactory, articleFactory, tagFactory, $timeout){
   $scope.comments = [];
   $scope.unreadComments = [];
   $scope.selectedComment = {};
   $scope.commentDeleteConfirm = false;
+  $scope.commentError = false;
 
 
 
@@ -44,6 +45,8 @@ app.controller('adminCommentsCtrl', function($scope, commentFactory, categoryFac
         $scope.selectedArticle = {};
       }, function(error){
         console.log(error);
+        $scope.commentError = true;
+        $timeout(function(){$scope.commentError = false;}, 3000)
       });
   };
 

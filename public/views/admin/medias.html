@@ -1,3 +1,29 @@
-<div class="admin-section" >
-  contenu medias (WIP)
+<div class="admin-section" ng-controller="adminMediasCtrl">
+
+  <!-- image upload success alert-->
+  <div class="notification is-success" ng-if="uploadSuccess">
+    <button class="delete" ng-click="closeAlert()"></button>
+    Image successfully added
+  </div>
+
+  <!-- image upload error alert-->
+  <div class="notification is-danger" ng-if="uploadError">
+    <button class="delete" ng-click="closeAlert()"></button>
+    {{errorMessage}}
+  </div>
+
+  <form class="form-upload" ng-submit="uploadFile()">
+    <input type="file" id="file" file-model="myFile"/>
+    <label for="file">Choose a file</label>
+    <input class="button is-primary" type="submit">
+  </form>
+
+  <h2>Your images</h2>
+  <div class="columns is-multiline has-text-centered">
+    <div class="column is-2 img-thumbnail" ng-repeat="i in images">
+      <a ng-href="{{i.path}}"><img ng-src="{{i.path}}" alt=""></a>
+      <button class="button is-danger delete-img" ng-click="deleteImage(i)">X</button>
+    </div>
+  </div>
+
 </div>

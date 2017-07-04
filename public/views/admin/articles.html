@@ -12,6 +12,24 @@
     An error has occured. Please retry later.
   </div>
 
+  <!--article comments modal-->
+  <div class="modal" ng-class="{'is-active' : seeCommentsModal}">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="modal-confirm">
+        <div ng-repeat="c in articleComments" class="columns">
+          <div class="column is-2">
+            <strong>{{c.author}} : </strong>
+          </div>
+          <div class="column is-10 has-text-left">
+            {{c.content}}
+          </div>
+        </div>
+        <button class="button is-danger" ng-click="seeCommentsModal = false">close</button>
+      </div>
+    </div>
+  </div>
+
   <!--article delete modal-->
   <div class="modal" ng-class="{'is-active' : articleDeleteConfirm}">
     <div class="modal-background"></div>
@@ -42,7 +60,7 @@
         <td><div ng-repeat="tag in a.tags">"{{tag.name}}" </div></td>
         <td>{{a.created_at | date : 'mediumDate'}}</td>
         <td>{{a.updated_at | date : 'mediumDate'}}</td>
-        <td><a href="#">see</a></td>
+        <td><span class="table-comments" ng-click="seeComments(a)">{{a.comments.length}} comments</span></td>
         <td>
           <a ng-href="#!/articles/{{a.slug}}"><button class="button is-primary">See</button></a>
           <button class="button is-info">Edit</button>

@@ -50,7 +50,7 @@
 
   .modal-confirm
     background-color: $white-ter
-    padding: 50px 10px
+    padding: 50px 15px
 
     article
       color: $primary
@@ -90,7 +90,7 @@
 
 
 .form-inline.ng-invalid, input.ng-invalid, textarea.ng-invalid, select.ng-invalid
-  box-shadow: 0 0 5px 2px $danger
+  box-shadow: 0 0 5px 1px $danger
 
 .form-inline input.ng-invalid
   box-shadow: none
@@ -123,6 +123,10 @@
 
 //3.Articles
 
+.table-comments
+  color : $primary
+  cursor: pointer
+
 //4.Comments
 
 //5.Categories
@@ -143,3 +147,26 @@
     box-shadow: inset 0 0 0 2px rgba(0,0,0,0.2)
 
 //6.Medias
+
+.img-thumbnail
+  position: relative
+  img
+    height: 150px
+    width: 85%
+    border: solid $primary 2px
+
+.form-upload
+  margin-bottom: 50px
+
+.delete-img
+  position: absolute
+  bottom: 0
+  right: 0
+
+input[type='file']
+  width: 0.1px
+  height: 0.1px
+  opacity: 0
+  overflow: hidden
+  position: absolute
+  z-index: -1
