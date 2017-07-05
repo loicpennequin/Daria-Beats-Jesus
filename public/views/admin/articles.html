@@ -1,15 +1,15 @@
 <div class="admin-section" ng-controller="adminArticlesCtrl">
 
-  <!-- article post success alert-->
-  <div class="notification is-success" ng-if="articleAdded">
+  <!--success alert-->
+  <div class="notification is-success" ng-if="alertSuccess">
     <button class="delete" ng-click="closeAlert()"></button>
-    Article successfully added
+    {{successMessage}}
   </div>
 
-  <!-- article post error alert-->
-  <div class="notification is-danger" ng-if="articleError">
-    <button class="delete" ng-click="closeAlert()"></button>
-    An error has occured. Please retry later.
+  <!--error alert-->
+  <div class="notification is-danger" ng-if="alertError">
+    <button class="delete" ng-click="closealert()"></button>
+    {{errorMessage}}
   </div>
 
   <!--article comments modal-->

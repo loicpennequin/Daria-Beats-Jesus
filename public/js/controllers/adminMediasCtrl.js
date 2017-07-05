@@ -3,6 +3,7 @@ app.controller('adminMediasCtrl', function($scope, mediasFactory, $timeout){
   $scope.uploadSuccess = false;
   $scope.uploadError = false;
   $scope.errorMessage = "";
+  $scope.buttonMessage = "Choose a file"
 
   $scope.uploadFile = function(){
     mediasFactory.uploadFile($scope.myFile)
@@ -16,6 +17,7 @@ app.controller('adminMediasCtrl', function($scope, mediasFactory, $timeout){
           $scope.uploadSuccess = true;
           $timeout(function(){ $scope.uploadSuccess = false}, 3000)
         }
+        $scope.buttonMessage = "Choose a file"
       }, function(error){
         $scope.errorMessage = "An error has occured. Please try again later.";
         $scope.uploadError = true;

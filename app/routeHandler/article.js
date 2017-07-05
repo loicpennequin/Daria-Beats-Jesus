@@ -41,26 +41,29 @@ exports.create = function(req,res){
   .save()
   .then(function (article) {
 
-    // post successfully saved
     // save tags
-    saveTags(tags)
-    .then(function (ids) {
-      article.load(['tags'])
-      .then(function (model) {
+    if (tags){
+      saveTags(tags)
+      .then(function (ids) {
+        article.load(['tags'])
+        .then(function (model) {
 
-        // attach tags to post
-        model.tags().attach(ids);
-        res.json({error: false, data: {message: 'Tags saved'}});
+          // attach tags to post
+          model.tags().attach(ids);
+          res.json({error: false, data: {message: 'article added'}});
+        })
+        .catch(function (err) {
+          console.log(err);
+          res.status(500).json({error: true, data: {message: err.message}});
+        });
       })
       .catch(function (err) {
         console.log(err);
         res.status(500).json({error: true, data: {message: err.message}});
       });
-    })
-    .catch(function (err) {
-      console.log(err);
-      res.status(500).json({error: true, data: {message: err.message}});
-    });
+    } else {
+      res.json({error: false, data: {message: 'article added'}});
+    }
   })
   .catch(function (err) {
     console.log(err);

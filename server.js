@@ -6,18 +6,17 @@ let http = require('http'),
     app = express(),
     bodyParser = require('body-parser'),
     Bookshelf = require('./database'),
-    formidable = require('express-formidable'),
-    mime = require('mime-types'),
+    formidable = require('formidable'),
     fs = require('fs'),
     port = 8080;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-app.use(formidable({
-  encoding: 'utf-8',
-  uploadDir: './assets',
-}));
+// app.use(formidable({
+//   encoding: 'utf-8',
+//   uploadDir: './assets',
+// }));
 
 /*=========================================ROUTING======================================*/
 
@@ -48,12 +47,11 @@ app.get('/api/images', image.list);
 app.post('/api/images/upload', image.upload);
 app.delete('/api/images/:id', image.delete)
 
-
 //////// 404
-app.use(function(req, res, next){
-      res.setHeader('Content-Type', 'text/plain');
-      res.send(404, 'Page introuvable !');
-});
+// app.use(function(req, res, next){
+//       res.setHeader('Content-Type', 'text/plain');
+//       res.send(404, 'Page introuvable !');
+// });
 
 app.listen(port);
 console.log('server is running at port ' + port);

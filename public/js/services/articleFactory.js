@@ -22,10 +22,13 @@ app.factory('articleFactory', function($http, $q){
     },
     addArticle : function(data){
       var deferred = $q.defer();
+      console.log('trying to save article ...');
       $http.post('http://localhost:8080/api/articles', data)
         .then(function(response){
+          console.log(response);
           deferred.resolve(response.data)
         }, function(error){
+          console.log(error);
           deferred.reject(error)
         });
       return deferred.promise;

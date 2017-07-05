@@ -2,13 +2,15 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   $scope.articles = [];
   $scope.newArticle = {};
   $scope.tags = [];
-  $scope.articleAdded = false;
-  $scope.articleError = false;
+  $scope.alertSuccess = false;
+  $scope.alertError = false;
   $scope.articleDeleteConfirm = false;
   $scope.selectedArticle = {};
   $scope.articleComments = [];
   $scope.seeComments = false;
   $scope.seeCommentsModal = false;
+  $scope.successMessage="";
+  $scope.errorMessage ="";
   $scope.tinymceOptions = {
     plugins : 'advlist autolink link image lists charmap preview colorpicker textcolor',
     toolbar: "bold italic underline strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify link image styleselect formatselect fontsizeselect",
@@ -16,7 +18,8 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
   };
 
   $scope.closeAlert = function(){
-    $scope.articleAdded = false;
+    $scope.alertSuccess = false;
+    $scope.alertError = false;
   }
 
   // CATEGORIES
@@ -47,16 +50,21 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
     if ($scope.newArticle.tags){
       $scope.newArticle.tagsArray = $scope.newArticle.tags.split(",")
     }
+    console.log($scope.newArticle.tagsArray);
     articleFactory.addArticle($scope.newArticle)
     .then(function(response){
+      console.log('article added');
       $scope.newArticle = {};
       $scope.new_article_form.$setPristine();
       $scope.getArticles();
-      $scope.articleAdded = true;
-      $timeout(function(){$scope.articleAdded = false;}, 3000)
+      $scope.alertSuccess = true;
+      $scope.successMessage = "Message successfully added."
+      $timeout(function(){$scope.alertSuccess = false;}, 3000)
     }, function(error){
-      $scope.articleError = true;
-      $timeout(function(){$scope.articleError = false;}, 3000)
+      console.log(error);
+      $scope.alertError = true;
+      $scope.errorMessage = "An error has occured while posting the article. Please try again later."
+      $timeout(function(){$scope.alertError = false;}, 3000)
     });
   };
 
@@ -70,8 +78,13 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
       .then(function(response){
         $scope.getArticles();
         $scope.selectedArticle = {};
+        $scope.alertSuccess = true;
+        $scope.successMessage = "Message successfully deleted."
+        $timeout(function(){$scope.alertSuccess = false;}, 3000)
       }, function(error){
-        console.log(error);
+        $scope.alertError = true;
+        $scope.errorMessage = "An error has occured while deleting the article. Please try again later."
+        $timeout(function(){$scope.alertError = false;}, 3000)
       });
   };
 
