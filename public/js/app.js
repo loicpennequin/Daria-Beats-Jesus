@@ -1,4 +1,4 @@
-var app = angular.module('DBJApp', ['ngAnimate', 'ngSanitize', 'ngRoute', 'ui.tinymce']);
+var app = angular.module('DBJApp', ['ngAnimate', 'ngSanitize', 'ngRoute', 'ui.tinymce', 'colorpicker.module']);
 
 app.config(function($routeProvider){
   $routeProvider

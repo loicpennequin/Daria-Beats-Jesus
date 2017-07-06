@@ -50,7 +50,9 @@ app.controller('adminArticlesCtrl', function($scope, categoryFactory, articleFac
     if ($scope.newArticle.tags){
       $scope.newArticle.tagsArray = $scope.newArticle.tags.split(",")
     }
-    console.log($scope.newArticle.tagsArray);
+    if ($scope.newArticle.cover == false){
+      $scope.newArticle.cover = "";
+    }
     articleFactory.addArticle($scope.newArticle)
     .then(function(response){
       console.log('article added');

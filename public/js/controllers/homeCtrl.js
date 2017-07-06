@@ -1,20 +1,24 @@
-app.controller('homeCtrl', function($scope){
-  $scope.articles = [
-    {title : "titre article 1", date : "23-06-2017", content : "lorem ipsum dolor sin amet machin truc content article 1"},
-    {title : "titre article 2", date : "23-06-2017", content : "lorem ipsum dolor sin amet machin truc content article 2"},
-    {title : "titre article 3", date : "23-06-2017", content : "lorem ipsum dolor sin amet machin truc content article 3"}
-  ];
-  $scope.post = ""
-  $scope.setOutput = function(){
-    $scope.output = $scope.post.replace(/(?:\r\n|\r|\n)/g, '<br/>')
+app.controller('homeCtrl', function($scope, articleFactory){
+  $scope.articles = [];
+
+  $scope.getArticles = function(){
+    articleFactory.getArticles()
+      .then(function(response){
+        $scope.articles = response.data;
+        $scope.articles.sort(compare);
+        console.log($scope.articles[1]);
+      }, function(error){
+        console.log(error);
+      });
+  };
+  $scope.getArticles();
+
+  function compare(a,b) {
+    if (a.created_at < b.created_at)
+      return 1;
+    if (a.created_at > b.created_at)
+      return -1;
+    return 0;
   };
 
-  $scope.addGras = function(){
-    $scope.post += "<strong></strong>";
-  }
-
-  $scope.addlink = function(){
-    $scope.post += "<a href=''></a>";
-  }
-  
-})
+});

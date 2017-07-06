@@ -37,6 +37,8 @@ exports.create = function(req,res){
     html : req.body.html,
     slug : slug,
     category_id : req.body.category.id,
+    color : req.body.color,
+    cover: req.body.cover
   })
   .save()
   .then(function (article) {

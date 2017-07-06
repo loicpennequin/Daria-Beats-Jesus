@@ -1,18 +1,72 @@
 <div ng-include="'views/components/header.html'"></div>
 <div ng-include="'views/components/navbar.html'"></div>
 
-<div class="columns content">
+<div class="columns page-content">
 
     <div class="column is-8 is-offset-2" ng-controller="homeCtrl">
-      <div ng-repeat="article in articles" class="article-wrapper">
-        <h2>{{article.title}}</h2>
-        {{article.content}}
+
+      <div class="tile is-ancestor is-vertical">
+        <div class="tile is-parent">
+          <div class="tile is-7 article is-parent newest" ng-style="{'background-color' : articles[0].color}">
+            <div class="article-inset-border"></div>
+            <div class="article-cover" ng-style="{'background-image' : 'url(' + articles[0].cover + ')'}"></div>
+            <div class="article-date">{{articles[0].created_at | date : dd-mm-yyyy}}</div>
+            <div class="article-category">{{articles[0].category.name}}</div>
+            <h2 class="article-title has-text-centered">{{articles[0].titre | uppercase}}</h2>
+            <a ng-href="#!/articles/{{articles[0].slug}}">
+              <button class="button is-primary is-pulled-right article-link">Read article</button>
+            </a>
+          </div>
+          <div class="tile is-5 is-parent is-vertical">
+            <div class="tile is-child article">
+              <div class="article-inset-border"></div>
+              <div class="article-cover" ng-style="{'background-image' : 'url(' + articles[1].cover + ')'}"></div>
+              <div class="article-date">{{articles[1].created_at | date : dd-mm-yyyy}}</div>
+              <div class="article-category">{{articles[1].category.name}}</div>
+              <h2 class="article-title has-text-centered">{{articles[1].titre | uppercase}}</h2>
+              <a ng-href="#!/articles/{{articles[1].slug}}">
+                <button class="button is-primary is-pulled-right article-link">Read article</button>
+              </a>
+            </div>
+            <div class="tile is-child article">
+              <div class="article-inset-border"></div>
+              <div class="article-cover" ng-style="{'background-image' : 'url(' + articles[2].cover + ')'}"></div>
+              <div class="article-date">{{articles[2].created_at | date : dd-mm-yyyy}}</div>
+              <div class="article-category">{{articles[2].category.name}}</div>
+              <h2 class="article-title has-text-centered">{{articles[2].titre | uppercase}}</h2>
+              <a ng-href="#!/articles/{{articles[2].slug}}">
+                <button class="button is-primary is-pulled-right article-link">Read article</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <div class="tile is-child article">
+            <div class="article-inset-border"></div>
+            <div class="article-cover" ng-style="{'background-image' : 'url(' + articles[3].cover + ')'}"></div>
+            <div class="article-date">{{articles[3].created_at | date : dd-mm-yyyy}}</div>
+            <div class="article-category">{{articles[3].category.name}}</div>
+            <h2 class="article-title has-text-centered">{{articles[3].titre | uppercase}}</h2>
+            <a ng-href="#!/articles/{{articles[3].slug}}">
+              <button class="button is-primary is-pulled-right article-link">Read article</button>
+            </a>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <div class="tile is-child article">
+            <article>
+              <a href="#">Older articles</a>
+            </article>
+          </div>
+        </div>
+
+
       </div>
     </div>
 
     <div ng-include="'views/components/menu.html'"></div>
 
-</div>
+</div> <!-- /page-content-->
 
 <div ng-include="'views/components/footer.html'"></div>
 
