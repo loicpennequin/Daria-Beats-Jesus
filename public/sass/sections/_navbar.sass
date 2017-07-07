@@ -3,4 +3,23 @@
   margin-bottom: 30px
   background-color: $white-bis
   color: $primary
-  border-bottom: solid 1px $primary
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  perspective: 800px
+  border-top: 1px solid #bbb
+  border-bottom: 1px solid #bbb
+
+.blog-navbar-item
+  font-family: $font1
+  color: $grey-dark
+  font-size: 1.1em
+  transition: all 0.5s
+  padding: 5px 15px
+  &:hover
+    transform: rotateY(180DEG)
+    color: $black-ter
+
+.blog-navbar-item.selected
+  border-bottom: 2px solid $primary
+  color: $black-ter

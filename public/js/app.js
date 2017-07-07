@@ -5,4 +5,5 @@ app.config(function($routeProvider){
     .when('/', {templateUrl: 'views/home.html'})
     .when('/admin', {templateUrl: 'views/admin.html', controller : 'adminMainCtrl'})
     .when('/articles/:slug', {templateUrl: 'views/article.html', controller : 'articleCtrl'})
+    .otherwise({redirectTo: 'views/home.html'})
 })

@@ -1,12 +1,12 @@
-app.controller('homeCtrl', function($scope, articleFactory){
+app.controller('homeCtrl', function($scope, articleFactory, $timeout){
   $scope.articles = [];
+  $scope.articlesShown = 4;
 
   $scope.getArticles = function(){
     articleFactory.getArticles()
       .then(function(response){
         $scope.articles = response.data;
         $scope.articles.sort(compare);
-        console.log($scope.articles[1]);
       }, function(error){
         console.log(error);
       });
@@ -21,4 +21,9 @@ app.controller('homeCtrl', function($scope, articleFactory){
     return 0;
   };
 
+  $scope.showMoreArticles = function(){
+    if ($scope.articlesShown < 7){
+      $scope.articlesShown++;
+    }
+  };
 });

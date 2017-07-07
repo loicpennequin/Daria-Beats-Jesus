@@ -1,9 +1,9 @@
-<div ng-include="'views/components/header.html'"></div>
-<div ng-include="'views/components/navbar.html'"></div>
+<!-- <div ng-include="'views/components/header.html'"></div>
+<div ng-include="'views/components/navbar.html'"></div> -->
 
 <div class="columns page-content">
 
-    <div class="column is-8 is-offset-2" ng-controller="homeCtrl">
+    <div class="column is-10 is-offset-1" ng-controller="homeCtrl">
 
       <div class="tile is-ancestor is-vertical">
         <div class="tile is-parent">
@@ -52,10 +52,48 @@
             </a>
           </div>
         </div>
-        <div class="tile is-parent">
+        <div class="tile is-parent more-articles" ng-if="articlesShown >= 5">
           <div class="tile is-child article">
-            <article>
-              <a href="#">Older articles</a>
+            <div class="article-inset-border"></div>
+            <div class="article-cover" ng-style="{'background-image' : 'url(' + articles[3].cover + ')'}"></div>
+            <div class="article-date">{{articles[4].created_at | date : dd-mm-yyyy}}</div>
+            <div class="article-category">{{articles[4].category.name}}</div>
+            <h2 class="article-title has-text-centered">{{articles[4].titre | uppercase}}</h2>
+            <a ng-href="#!/articles/{{articles[4].slug}}">
+              <button class="button is-primary is-pulled-right article-link">Read article</button>
+            </a>
+          </div>
+        </div>
+        <div class="tile is-parent more-articles" ng-if="articlesShown >= 6">
+          <div class="tile is-child article">
+            <div class="article-inset-border"></div>
+            <div class="article-cover" ng-style="{'background-image' : 'url(' + articles[3].cover + ')'}"></div>
+            <div class="article-date">{{articles[5].created_at | date : dd-mm-yyyy}}</div>
+            <div class="article-category">{{articles[5].category.name}}</div>
+            <h2 class="article-title has-text-centered">{{articles[5].titre | uppercase}}</h2>
+            <a ng-href="#!/articles/{{articles[5].slug}}">
+              <button class="button is-primary is-pulled-right article-link">Read article</button>
+            </a>
+          </div>
+        </div>
+        <div class="tile is-parent more-articles" ng-if="articlesShown >= 7">
+          <div class="tile is-child article">
+            <div class="article-inset-border"></div>
+            <div class="article-cover" ng-style="{'background-image' : 'url(' + articles[6].cover + ')'}"></div>
+            <div class="article-date">{{articles[6].created_at | date : dd-mm-yyyy}}</div>
+            <div class="article-category">{{articles[6].category.name}}</div>
+            <h2 class="article-title has-text-centered">{{articles[6].titre | uppercase}}</h2>
+            <a ng-href="#!/articles/{{articles[6].slug}}">
+              <button class="button is-primary is-pulled-right article-link">Read article</button>
+            </a>
+          </div>
+        </div>
+
+        <div class="tile is-parent">
+          <div class="tile is-child more has-text-centered" style="cursor : pointer;">
+            <article scroll-bottom>
+              <p ng-click="showMoreArticles()" ng-if="articlesShown < 7">Show More</p>
+              <a href="#" ng-if="articlesShown >= 7">Older Posts</a>
             </article>
           </div>
         </div>
@@ -63,26 +101,10 @@
 
       </div>
     </div>
+    <a id="bottom"></a>
 
-    <div ng-include="'views/components/menu.html'"></div>
+    <!-- <div ng-include="'views/components/menu.html'"></div> -->
 
 </div> <!-- /page-content-->
 
-<div ng-include="'views/components/footer.html'"></div>
-
-<!-- <div ng-controller="homeCtrl">
-  <form ng-submit="setOutput()">
-    <div style="cursor: pointer; border : solid 1px black; width : 50px;" ng-click="addGras()">gras</div>
-    <div style="cursor: pointer; border : solid 1px black; width : 50px;" ng-click="addlink()">link</div>
-
-    <textarea ng-model="post" rows="8" cols="80"></textarea>
-    <input type="submit" name="" value="test">
-  </form>
-
-
-
-  <div ng-bind-html="output"></div>
-
-  </div> -->
-
-</div>
+<!-- <div ng-include="'views/components/footer.html'"></div> -->

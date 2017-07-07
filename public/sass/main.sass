@@ -16,3 +16,41 @@ html, body
   margin : 0
   padding: 0
   background-color: $white-bis
+
+.page-content
+  height: 150vh
+  background-color: $white-bis
+
+.view-container
+  overflow-x: hidden
+
+.view
+  overflow-y: scroll
+  overflow-x: hidden
+  position: absolute
+  max-height: 150vh
+  top: 100vh
+  left: 0
+  transition: all 1s ease-in-out
+  width: calc(100% + 15px)
+
+.view.ng-enter,
+.view.ng-leave
+  -webkit-transition: all 1s ease
+  transition: all 1s ease
+
+.view.ng-enter
+  left: 100%
+  opacity: 0
+
+.view.ng-enter-active
+  left: 0
+  opacity: 1
+
+.view.ng-leave
+  left: 0
+  opacity: 1
+
+.view.ng-leave-active
+  left: -100%
+  opacity: 0

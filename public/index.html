@@ -10,11 +10,17 @@
     <link rel="stylesheet" href="css/lib/colorpicker.min.css">
     <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre|Poppins" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Tulpen+One" rel="stylesheet">
   </head>
   <body ng-app="DBJApp">
 
-    <div ng-view></div>
+    <div ng-include="'views/components/header.html'"></div>
+    <div ng-include="'views/components/navbar.html'"></div>
+    <div class="view-container">
+      <div ng-view class="view"></div>
+    </div>
+    <div ng-include="'views/components/footer.html'"></div>
+
 
     <!--LIBRARIES -->
     <script src="js/lib/jquery-3.1.1.min.js"></script>
@@ -53,6 +59,8 @@
     <script src="js/directives/fileModel.js" charset="utf-8"></script>
     <script src="js/directives/validateFile.js" charset="utf-8"></script>
     <script src="js/directives/bootstrap-colorpicker-module.js" charset="utf-8"></script>
+    <script src="js/directives/scrollBottom.js" charset="utf-8"></script>
+
     <!--FILTERS-->
     <script src="js/filters/filters.js" charset="utf-8"></script>
 
