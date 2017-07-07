@@ -1,7 +1,6 @@
 .blog-navbar
   padding: 10px
   margin-bottom: 30px
-  background-color: $white-bis
   color: $primary
   display: flex
   flex-direction: row
@@ -9,6 +8,8 @@
   perspective: 800px
   border-top: 1px solid #bbb
   border-bottom: 1px solid #bbb
+  position: relative
+  z-index: 10
 
 .blog-navbar-item
   font-family: $font1
@@ -23,3 +24,8 @@
 .blog-navbar-item.selected
   border-bottom: 2px solid $primary
   color: $black-ter
+
+.blog-navbar-btn
+  background-color: $white-bis
+  position: relative
+  z-index: 15
