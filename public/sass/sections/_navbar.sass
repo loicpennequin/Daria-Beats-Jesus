@@ -1,31 +1,50 @@
 .blog-navbar
   padding: 10px
   margin-bottom: 30px
-  color: $primary
+  color: $grey-dark
   display: flex
   flex-direction: row
   justify-content: space-around
   perspective: 800px
-  border-top: 1px solid #bbb
-  border-bottom: 1px solid #bbb
+  align-items: flex-start
   position: relative
   z-index: 10
+  font-family: $font1
 
 .blog-navbar-item
-  font-family: $font1
   color: $grey-dark
   font-size: 1.1em
-  transition: all 0.5s
   padding: 5px 15px
-  &:hover
-    transform: rotateY(180DEG)
-    color: $black-ter
+  background-color: $white-bis
 
 .blog-navbar-item.selected
   border-bottom: 2px solid $primary
   color: $black-ter
 
 .blog-navbar-btn
-  background-color: $white-bis
   position: relative
   z-index: 15
+  &:hover div div
+    transform: none
+    opacity: 1
+
+.blog-navbar-dropdown
+  overflow: hidden
+  background-color: transparent
+  border-bottom-left-radius: 10px
+  border-bottom-right-radius: 10px
+  a
+    color: inherit
+  div
+    background-color: $white-ter
+    padding: 5px 15px
+    transition: all 0.5s
+    cursor: pointer
+    opacity: 0
+    &:hover
+      background-color: $grey-light
+
+  div:nth-child(odd)
+    transform: translateX(-100%) rotate(90DEG)
+  div:nth-child(even)
+    transform: translateX(100%) rotate(90DEG)

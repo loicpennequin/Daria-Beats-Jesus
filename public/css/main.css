@@ -4301,16 +4301,43 @@ label.panel-block {
 .navigation-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 1.2em;
+  padding: 15px; }
+  .navigation-wrapper a {
+    padding: 5px;
+    border: solid #3c8cdd 2px; }
 
 .previous {
   transform: rotateY(180DEG); }
 
 .viewed-article-content {
   padding: 10px; }
+  .viewed-article-content h2 {
+    margin-bottom: 30px; }
+  .viewed-article-content .comment {
+    border: 1px solid #b5b5b5;
+    border-radius: 10px;
+    padding: 5px 30px;
+    width: 80%;
+    margin: 15px auto; }
+  .viewed-article-content .comment-title {
+    color: #3c8cdd;
+    margin-bottom: 15px; }
+    .viewed-article-content .comment-title span {
+      font-weight: bold; }
+  .viewed-article-content .isAdmin {
+    color: #ff383f; }
+  .viewed-article-content .comment-form {
+    margin-top: 40px; }
+  .viewed-article-content .input-small {
+    width: 25%; }
 
 .page-content .content {
   margin-top: 25px; }
+
+.browse-items {
+  font-family: "Poppins", sans-serif; }
 
 .footer {
   position: relative;
@@ -4548,34 +4575,52 @@ label.panel-block {
 .blog-navbar {
   padding: 10px;
   margin-bottom: 30px;
-  color: #3c8cdd;
+  color: #4a4a4a;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   perspective: 800px;
-  border-top: 1px solid #bbb;
-  border-bottom: 1px solid #bbb;
+  align-items: flex-start;
   position: relative;
-  z-index: 10; }
+  z-index: 10;
+  font-family: "Averia Serif Libre", cursive; }
 
 .blog-navbar-item {
-  font-family: "Averia Serif Libre", cursive;
   color: #4a4a4a;
   font-size: 1.1em;
-  transition: all 0.5s;
-  padding: 5px 15px; }
-  .blog-navbar-item:hover {
-    transform: rotateY(180DEG);
-    color: #242424; }
+  padding: 5px 15px;
+  background-color: #f0f0f0; }
 
 .blog-navbar-item.selected {
   border-bottom: 2px solid #3c8cdd;
   color: #242424; }
 
 .blog-navbar-btn {
-  background-color: #f0f0f0;
   position: relative;
   z-index: 15; }
+  .blog-navbar-btn:hover div div {
+    transform: none;
+    opacity: 1; }
+
+.blog-navbar-dropdown {
+  overflow: hidden;
+  background-color: transparent;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; }
+  .blog-navbar-dropdown a {
+    color: inherit; }
+  .blog-navbar-dropdown div {
+    background-color: #ebebeb;
+    padding: 5px 15px;
+    transition: all 0.5s;
+    cursor: pointer;
+    opacity: 0; }
+    .blog-navbar-dropdown div:hover {
+      background-color: #b5b5b5; }
+  .blog-navbar-dropdown div:nth-child(odd) {
+    transform: translateX(-100%) rotate(90DEG); }
+  .blog-navbar-dropdown div:nth-child(even) {
+    transform: translateX(100%) rotate(90DEG); }
 
 .admin-nav {
   background-color: #363636;
@@ -4587,7 +4632,8 @@ label.panel-block {
   .admin-nav li {
     padding: 10px;
     padding-left: 30px;
-    transition: all 0.2s ease-in-out; }
+    transition: all 0.2s ease-in-out;
+    position: relative; }
     .admin-nav li:hover {
       color: #3c8cdd;
       background-color: #242424; }
@@ -4596,6 +4642,20 @@ label.panel-block {
   .admin-nav li.active {
     background-color: #3c8cdd;
     color: #fff; }
+  .admin-nav .unread-notif {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff383f;
+    color: white;
+    width: 50px;
+    height: 100%;
+    z-index: 5;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em; }
 
 .admin-content {
   background-color: #ebebeb;
@@ -4729,6 +4789,9 @@ html, body {
   padding: 0;
   background-color: #f0f0f0; }
 
+body {
+  perspective: 300px; }
+
 .page-content {
   height: 150vh;
   background-color: #f0f0f0;
@@ -4742,11 +4805,15 @@ html, body {
   overflow-x: hidden;
   position: absolute;
   max-height: 150vh;
-  top: 105vh;
+  top: 100vh;
   left: 0;
   transition: all 1s ease-in-out;
   width: calc(100% + 15px);
   z-index: 9; }
+
+.view-backoffice {
+  top: 0;
+  transition: none !important; }
 
 .view.ng-enter,
 .view.ng-leave {
@@ -4754,19 +4821,21 @@ html, body {
   transition: all 1s ease; }
 
 .view.ng-enter {
-  left: 100%;
+  transform: rotateX(90DEG);
+  transform-origin: bottom left;
   opacity: 0; }
 
 .view.ng-enter-active {
-  left: 0;
+  transform: rotateX(0DEG);
   opacity: 1; }
 
 .view.ng-leave {
-  left: 0;
+  transform: rotateX(0DEG);
+  transform-origin: top right;
   opacity: 1; }
 
 .view.ng-leave-active {
-  left: -100%;
+  transform: rotateX(90DEG);
   opacity: 0; }
 
 /*# sourceMappingURL=main.css.map */

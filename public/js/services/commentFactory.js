@@ -29,6 +29,16 @@ app.factory('commentFactory', function($http, $q){
           deferred.reject(error)
         });
       return deferred.promise;
+    },
+    addComment : function(data){
+      var deferred = $q.defer();
+      $http.post('http://localhost:8080/api/comments', data)
+        .then(function(response){
+          deferred.resolve(response.data)
+        }, function(error){
+          deferred.reject(error)
+        });
+      return deferred.promise;
     }
   }
 });

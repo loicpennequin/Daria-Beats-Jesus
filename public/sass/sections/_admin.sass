@@ -13,6 +13,7 @@
     padding: 10px
     padding-left: 30px
     transition: all 0.2s ease-in-out
+    position: relative
 
     &:hover
       color: $primary
@@ -24,6 +25,21 @@
   li.active
     background-color: $primary
     color: $primary-invert
+
+  .unread-notif
+    position: absolute
+    top: 0
+    right: 0
+    background-color: $danger
+    color: $white
+    width: 50px
+    height: 100%
+    z-index: 5
+    font-family: $font2
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 1.3em
 
 ///////////////////////
 /////SECTIONS/////////
@@ -130,7 +146,7 @@
 //4.Comments
 
 //5.Categories
-  
+
 .admin-tag
   background-color: $white
   color: $primary

@@ -2,12 +2,42 @@
   display: flex
   align-items: center
   justify-content: center
+  font-size: 1.2em
+  padding: 15px
+  a
+    padding: 5px
+    border: solid $primary 2px
 
 .previous
   transform: rotateY(180DEG)
 
 .viewed-article-content
   padding: 10px
+
+  h2
+    margin-bottom: 30px
+
+  .comment
+    border: 1px solid $grey-light
+    border-radius: 10px
+    padding: 5px 30px
+    width: 80%
+    margin: 15px auto
+
+  .comment-title
+    color: $primary
+    margin-bottom: 15px
+    span
+      font-weight: bold
+
+  .isAdmin
+    color: $danger
+
+  .comment-form
+    margin-top: 40px
+
+  .input-small
+    width: 25%
 
 .page-content .content
   margin-top: 25px

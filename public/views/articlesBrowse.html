@@ -1,0 +1,30 @@
+<div class="page-content">
+  <div class="columns">
+    <div class="column is-8 is-offset-2 browse-list">
+      <!-- display for categories and tags -->
+      <div ng-if="sortType !== 'date' ">
+        <div ng-repeat="item in items | orderBy : 'name'">
+          <h2>{{item.name}}</h2>
+          <ul>
+            <li ng-repeat="article in item.articles | orderBy : '-created_at'">
+              <a ng-href="#!/articles/{{article.slug}}">{{article.titre}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- display for date -->
+      <div ng-if="sortType == 'date'">
+        <div ng-repeat="item in items | orderBy : '-dateparse'">
+          <h2>{{item.date | date : 'MMMM yyyy'}}</h2>
+          <ul>
+            <li ng-repeat="article in item.articles | orderBy : '-created_at'">
+              <a ng-href="#!/articles/{{article.slug}}">{{article.titre}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

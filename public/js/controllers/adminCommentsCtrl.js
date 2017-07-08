@@ -15,6 +15,7 @@ app.controller('adminCommentsCtrl', function($scope, commentFactory, categoryFac
         $scope.comments = response.data;
         $scope.unreadComments = [];
         sortUnread($scope.comments);
+        $scope.$emit('updateUnread');
       }, function(error){
         console.log(error);
       });

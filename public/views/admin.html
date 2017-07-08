@@ -9,6 +9,7 @@
         <i class="fa fa-book" aria-hidden="true"></i>Articles
       </li>
       <li admin-nav-item ng-click="showSection('comments')">
+        <div class="unread-notif" ng-if="unread.length > 0">{{unread.length}}</div>
         <i class="fa fa-comments-o" aria-hidden="true"></i>Comments
       </li>
       <li admin-nav-item ng-click="showSection('categories')">

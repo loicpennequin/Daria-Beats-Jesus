@@ -17,6 +17,9 @@ html, body
   padding: 0
   background-color: $white-bis
 
+body
+  perspective: 300px
+
 .page-content
   height: 150vh
   background-color: $white-bis
@@ -30,11 +33,15 @@ html, body
   overflow-x: hidden
   position: absolute
   max-height: 150vh
-  top: 105vh
+  top: 100vh
   left: 0
   transition: all 1s ease-in-out
   width: calc(100% + 15px)
   z-index: 9
+
+.view-backoffice
+  top: 0
+  transition: none !important
 
 .view.ng-enter,
 .view.ng-leave
@@ -42,17 +49,19 @@ html, body
   transition: all 1s ease
 
 .view.ng-enter
-  left: 100%
+  transform: rotateX(90DEG)
+  transform-origin: bottom left
   opacity: 0
 
 .view.ng-enter-active
-  left: 0
+  transform:  rotateX(0DEG)
   opacity: 1
 
 .view.ng-leave
-  left: 0
+  transform: rotateX(0DEG)
+  transform-origin: top right
   opacity: 1
 
 .view.ng-leave-active
-  left: -100%
+  transform: rotateX(90DEG)
   opacity: 0

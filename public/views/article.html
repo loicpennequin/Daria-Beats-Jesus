@@ -1,16 +1,47 @@
 <!-- <div ng-include="'views/components/header.html'"></div>
 <div ng-include="'views/components/navbar.html'"></div> -->
 <div class="columns page-content">
-    <div class="column is-1 navigation-wrapper">
-      <a ng-href="#!/articles/{{prev}}" ng-if="prev"><img src="assets/img/arrow.png" class="previous" alt="previous post"></a>
+    <div class="column is-2 navigation-wrapper has-text-centered">
+      <a ng-href="#!/articles/{{prev.slug}}" ng-if="prev"> Previous article: {{prev.titre}}</a>
     </div>
-    <div class="column is-8 is-offset-1 viewed-article-content">
-      <h1 class="title">{{article.titre}}</h1>
+
+    <div class="column is-8 viewed-article-content">
+      <h1 class=>{{article.titre}}</h1>
       <h2 class="subtitle">{{article.created_at | date : 'MM/dd/yyyy'}}
       <div class="content" ng-bind-html="articleContent"></div>
+      <h2>Comments : </h2>
+      <div class="comment" ng-repeat="comment in article.comments | orderBy: '-created_at'">
+        <div class="comment-title">
+          by <span ng-class="{'isAdmin': commentIsAdmin(comment)}">{{comment.author}}</span>, on {{comment.created_at | date : "MM/dd/yyyy ', ' H:mm" }} :
+        </div>
+        <div class="comment-content">
+          {{comment.content}}
+        </div>
+      </div>
+      <div class="comment-for</br>m">
+        <h2>Your comment :</h2>
+        <form ng-submit="addComment()" name="new_comment_form">
+          <div class="field input-small">
+            <label class="label">Name</label>
+            <p class="control">
+              <input class="input" ng-model="newComment.author"type="text">
+            </p>
+          </div>
+          <div class="field">
+            <label class="label">Comment</label>
+            <p class="control">
+              <textarea class="textarea" ng-model="newComment.content"></textarea>
+            </p>
+          </div>
+          <div class="field">
+            <button class="button is-primary">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="column is-1  is-offset-1 navigation-wrapper">
-      <a ng-href="#!/articles/{{next}}" ng-if="next"><img src="assets/img/arrow.png" class="next" alt="next post"></a>
+
+    <div class="column is-2 navigation-wrapper has-text-centered">
+      <a ng-href="#!/articles/{{next.slug}}" ng-if="next">Next article : {{next.titre}}</a>
     </div>
 </div>
 

@@ -12,17 +12,18 @@
     <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre|Poppins" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Tulpen+One" rel="stylesheet">
   </head>
-  <body ng-app="DBJApp">
+  <body ng-app="DBJApp" ng-controller="globalCtrl">
 
-    <div ng-include="'views/components/header.html'"></div>
-    <div ng-include="'views/components/navbar.html'"></div>
+    <div ng-if="!isBackOffice" ng-include="'views/components/header.html'"></div>
+    <div ng-if="!isBackOffice" ng-include="'views/components/navbar.html'"></div>
     <div class="view-container">
-      <div ng-view class="view"></div>
+      <div ng-view class="view" ng-class="{'view-backoffice' : isBackOffice}"></div>
     </div>
-    <div ng-include="'views/components/footer.html'"></div>
+    <div ng-if="!isBackOffice" ng-include="'views/components/footer.html'"></div>
 
 
     <!--LIBRARIES -->
+    <script src="js/lib/lodash.js" charset="utf-8"></script>
     <script src="js/lib/jquery-3.1.1.min.js"></script>
     <!-- <script src="js/lib/bootstrap.min.js"></script> -->
     <script src="js/lib/angular.js"></script>
@@ -45,6 +46,7 @@
 
 
     <!--CONTROLLER-->
+    <script src="js/controllers/globalCtrl.js" charset="utf-8"></script>
     <script src="js/controllers/homeCtrl.js" charset="utf-8"></script>
     <script src="js/controllers/adminMainCtrl.js" charset="utf-8"></script>
     <script src="js/controllers/adminCategoriesCtrl.js" charset="utf-8"></script>
@@ -52,6 +54,8 @@
     <script src="js/controllers/adminCommentsCtrl.js" charset="utf-8"></script>
     <script src="js/controllers/adminMediasCtrl.js" charset="utf-8"></script>
     <script src="js/controllers/articleCtrl.js" charset="utf-8"></script>
+    <script src="js/controllers/articleBrowseCtrl.js" charset="utf-8"></script>
+
 
     <!--DIRECTIVES-->
     <script src="js/directives/adminNavItem.js" charset="utf-8"></script>

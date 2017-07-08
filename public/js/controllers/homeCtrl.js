@@ -1,4 +1,5 @@
 app.controller('homeCtrl', function($scope, articleFactory, $timeout){
+  $scope.$emit('FrontOffice')
   $scope.articles = [];
   $scope.articlesShown = 4;
 

@@ -6,7 +6,7 @@ let express = require('express'),
 
 exports.list = function(req, res){
   Categories.forge()
-  .fetch()
+  .fetch({withRelated: ['articles']})
   .then(function (collection) {
     res.json({error: false, data: collection.toJSON()});
   })
