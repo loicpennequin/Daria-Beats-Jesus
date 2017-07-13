@@ -4,10 +4,12 @@
   "description": "Mon blog",
   "main": "app.js",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "bookshelf": "^0.10.3",
     "express": "^4.15.3",
     "express-formidable": "^1.0.0",
+    "express-session": "^1.15.3",
     "formidable": "^1.1.1",
     "knex": "^0.12.9",
     "lodash": "^4.17.4",

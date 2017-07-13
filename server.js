@@ -3,6 +3,7 @@
 let http = require('http'),
     path = require('path'),
     express = require('express'),
+    bcrypt = require('bcrypt-nodejs'),
     app = express(),
     bodyParser = require('body-parser'),
     Bookshelf = require('./database'),
@@ -24,7 +25,10 @@ let category = require('./app/routeHandler/category'),
     article = require('./app/routeHandler/article'),
     tag = require('./app/routeHandler/tag'),
     comment = require('./app/routeHandler/comment'),
-    image = require('./app/routeHandler/image');
+    image = require('./app/routeHandler/image'),
+    User = require('./app/models/user.js'),
+    hash = bcrypt.hashSync("4dm1n");
+
 
 app.get('/api/articles', article.list);
 app.get('/api/articles/:slug', article.show);

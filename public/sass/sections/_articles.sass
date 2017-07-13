@@ -1,12 +1,3 @@
-.navigation-wrapper
-  display: flex
-  align-items: center
-  justify-content: center
-  font-size: 1.2em
-  padding: 15px
-  a
-    padding: 5px
-    border: solid $primary 2px
 
 .previous
   transform: rotateY(180DEG)
@@ -14,8 +5,38 @@
 .viewed-article-content
   padding: 10px
 
+  .category
+    padding: 10px
+    background-color: $info
+    color: $white
+
+  .navigation-wrapper
+    display: flex
+    align-items: flex-start
+    justify-content: center
+    font-size: 1.2em
+    padding: 15px
+
+  .navigation-link
+    padding: 5px 10px
+    border-radius: 5px
+    color: $white
+    background-color: $primary
+    margin: 5px
+
   h2
     margin-bottom: 30px
+
+  .tags
+    display: flex
+    flex-direction: row
+    align-items: flex-end
+    flex-wrap: wrap
+    margin-bottom: 15px
+
+  .tag
+    margin-left: 5px
+    margin-right: 5px
 
   .comment
     border: 1px solid $grey-light
@@ -23,6 +44,7 @@
     padding: 5px 30px
     width: 80%
     margin: 15px auto
+    background-color: $white
 
   .comment-title
     color: $primary

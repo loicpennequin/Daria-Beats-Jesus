@@ -18,7 +18,7 @@ html, body
   background-color: $white-bis
 
 body
-  perspective: 300px
+  perspective: 2000px
 
 .page-content
   height: 150vh
@@ -41,27 +41,27 @@ body
 
 .view-backoffice
   top: 0
-  transition: none !important
+  // transition: none !important
 
 .view.ng-enter,
 .view.ng-leave
-  -webkit-transition: all 1s ease
+  -webkit-transition: all 2s ease
   transition: all 1s ease
 
 .view.ng-enter
-  transform: rotateX(90DEG)
-  transform-origin: bottom left
+  transform: translateX(100%)
+  // transform-origin: bottom left
   opacity: 0
 
 .view.ng-enter-active
-  transform:  rotateX(0DEG)
+  transform:  none
   opacity: 1
 
 .view.ng-leave
-  transform: rotateX(0DEG)
-  transform-origin: top right
+  transform: none
+  transform-origin: top left
   opacity: 1
 
 .view.ng-leave-active
-  transform: rotateX(90DEG)
+  transform: rotate(90DEG)
   opacity: 0

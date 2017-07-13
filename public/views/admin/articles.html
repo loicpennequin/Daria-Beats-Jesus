@@ -62,9 +62,9 @@
         <td>{{a.updated_at | date : 'mediumDate'}}</td>
         <td><span class="table-comments" ng-click="seeComments(a)">{{a.comments.length}} comments</span></td>
         <td>
-          <a ng-href="#!/articles/{{a.slug}}"><button class="button is-primary">See</button></a>
-          <button class="button is-info">Edit</button>
-          <button class="button is-danger" ng-click="confirmDeletion(a)">X</button>
+          <a ng-href="#!/articles/{{a.slug}}"><button class="button is-primary is-small">See</button></a>
+          <button class="button is-info is-small">Edit</button>
+          <button class="button is-danger is-small" ng-click="confirmDeletion(a)">X</button>
         </td>
       </tr>
     </tbody>

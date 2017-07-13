@@ -1,14 +1,41 @@
 <!-- <div ng-include="'views/components/header.html'"></div>
 <div ng-include="'views/components/navbar.html'"></div> -->
 <div class="columns page-content">
-    <div class="column is-2 navigation-wrapper has-text-centered">
-      <a ng-href="#!/articles/{{prev.slug}}" ng-if="prev"> Previous article: {{prev.titre}}</a>
-    </div>
 
-    <div class="column is-8 viewed-article-content">
+    <div class="column is-8 is-offset-2 viewed-article-content">
       <h1 class=>{{article.titre}}</h1>
-      <h2 class="subtitle">{{article.created_at | date : 'MM/dd/yyyy'}}
+      <h2 class="subtitle">{{article.created_at | date : 'MM/dd/yyyy'}}</h2>
+      <div class="is-pulled-right category">{{article.category.name}}</div>
       <div class="content" ng-bind-html="articleContent"></div>
+
+      <div class="tags">
+        <h3>tags : </h3>
+        <div class="tag is-primary" ng-repeat="tag in article.tags">
+          {{tag.name}}
+        </div>
+      </div>
+
+      <div class="navigation-wrapper">
+        <a ng-href="#!/articles/{{prev.slug}}" class="navigation-link" ng-if="prev"> Previous article: {{prev.titre}}</a>
+        <a ng-href="#!/articles/{{next.slug}}" class="navigation-link" ng-if="next">Next article : {{next.titre}}</a>
+      </div>
+
+      <!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your share button code -->
+      <div class="fb-share-button"
+        data-href="http://www.your-domain.com/your-page.html"
+        data-layout="button_count">
+      </div>
+
       <h2>Comments : </h2>
       <div class="comment" ng-repeat="comment in article.comments | orderBy: '-created_at'">
         <div class="comment-title">
@@ -18,7 +45,8 @@
           {{comment.content}}
         </div>
       </div>
-      <div class="comment-for</br>m">
+
+      <div class="comment-form">
         <h2>Your comment :</h2>
         <form ng-submit="addComment()" name="new_comment_form">
           <div class="field input-small">
@@ -38,11 +66,9 @@
           </div>
         </form>
       </div>
-    </div>
 
-    <div class="column is-2 navigation-wrapper has-text-centered">
-      <a ng-href="#!/articles/{{next.slug}}" ng-if="next">Next article : {{next.titre}}</a>
-    </div>
+    </div> <!--/viewed-article-content-->
+
 </div>
 
 <!-- <div ng-include="'views/components/footer.html'"></div> -->

@@ -19,9 +19,11 @@ app.controller('articleCtrl', function($scope, articleFactory, commentFactory, $
         let index = $scope.articles.indexOf($scope.article);
         if (index > 0){
           $scope.prev = $scope.articles[index-1];
+          $scope.prev.titre = truncateTitle($scope.prev.titre);
         }
         if (index < $scope.articles.length-1 ){
           $scope.next = $scope.articles[index+1];
+          $scope.next.titre = truncateTitle($scope.next.titre);
         }
       }, function(error){
         console.log(error);
@@ -48,6 +50,9 @@ app.controller('articleCtrl', function($scope, articleFactory, commentFactory, $
     return 0;
   };
 
+  function truncateTitle(title){
+    return title.substring(0,25) + "..."
+  }
 
   //COMMENTS
 
